@@ -10,24 +10,30 @@
 
 <body>
 
+    <video autoplay muted loop id="bg-video">
+        <source src="img/fondo.mp4" type="video/mp4">
+    </video>
+
     <header class="header2">
         <nav class="nav2">
-                <a href="index.html">
-                    <img src="img/home.png" alt="home">
-                </a>
+            <a href="index.html">
+                <img src="img/home.png" alt="home">
+            </a>
         </nav>
     </header>
 
-        <form action="afegircanco.php" method="post">
-            <div class="afegircan">
-                <h3>Títol de la cançó<input type="text" name="titol"><br></h3>
-                <h3>Artista<input type="text" name="artista"><br></h3>
-                <h3>Fitxer de música<input type="file" name="fmusic" accept="audio/*"><br></h3>
-                <h3>Fitxer de caràtula<input type="file" name="fcarat" accept="image/*"><br></h3>
-                <h3>Fitxer de joc<input type="file" name="fjoc"><br></h3>
-                <h3><input type="submit" class="enviar"></h3>
-            </div>
-        </form>
+    <form action="afegircanco.php" method="post">
+        <div class="afegircan">
+            <ul>
+                <li>Títol de la cançó<input type="text" name="titol"><br></li>
+                <li>Artista<input type="text" name="artista"><br></li>
+                <li>Fitxer de música<input type="file" name="fmusic" accept="audio/*"><br></li>
+                <li>Fitxer de caràtula<input type="file" name="fcarat" accept="image/*"><br></li>
+                <li>Fitxer de joc<input type="file" name="fjoc"><br></li>
+                <li><input type="submit" class="enviar"></li>
+            </ul>
+        </div>
+    </form>
 </body>
 
 </html>

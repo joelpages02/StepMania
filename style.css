@@ -6,10 +6,34 @@
 }
 
 body {
-    background-image: url("img/fons.jpg");
+    background-image: url("img/fondo.mp4");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     margin: 1%;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    padding-top: 20vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 20px;
 }
 
 header {
@@ -54,27 +78,50 @@ nav {
 
 }
 
-nav h2 {
+nav a {
     color: pink;
     font-size: 75%;
     margin-right: 2em;
 }
 
-nav h2:last-child {
+nav a:last-child {
     margin-right: 0;
 }
 
-/*div {
+.audio-controls {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    border-radius: 10%;
-    background-color: gray;
-    margin-top: 1%;
-    flex: 1;
-} */
+    margin: 20px 0;
+    
+}
+
+audio {
+    display: none;
+}
+
+.audio-controls button {
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    color: pink;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: background-color 0.3s;
+}
+
+.audio-controls button:hover {
+    background-color: palevioletred;
+}
+
+#musica{
+    width: 1.5em;
+    height: 1.5em;
+}
 
 aside {
+    width: 20%;
     display: flex;
     justify-content: flex-start;
     justify-items: flex-start;
@@ -94,23 +141,29 @@ aside li {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    padding: 20px;
 }
 
 .bmenu {
-    width: 15%;
-    border-radius: 100%;
-    padding: 5px 10px;
-    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0;
+    font-size: 16px;
     border: 4px ridge pink;
     background-color: #000000;
-    padding: 10px 50px;
     color: pink;
     cursor: pointer;
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
+    transition: transform 0.2s;
 }
 
-.menu .bmenu:hover {
+.bmenu:hover {
     background-color: palevioletred;
+    transform: scale(1.05);
 }
 
 footer {
@@ -129,46 +182,77 @@ footer h3 {
 
 /* Formulari afegir cançó */
 
-.header2{
+.header2 {
     display: flex;
     justify-content: flex-start;
     padding: 10px;
 }
 
-.nav2 img{
+.nav2 img {
     width: 20px;
     height: 20px;
 }
 
 .afegircan {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.494);
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
-    padding: 20px;
-    border: 1px solid pink;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    border: 0.1em solid pink;
+    border-radius: 1em;
+    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
-.afegircan h3 {
+.afegircan ul{
+    padding: 0;
+    margin: 0;
+}
+
+.afegircan ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     color: pink;
-    margin-bottom: 20px;
     text-align: center;
+    list-style: none;
+}
+
+.afegircan input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input, textarea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: pink;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 1em;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .afegircan input[type="text"],
 .afegircan input[type="file"],
 .afegircan input[type="submit"] {
+    background-color: #000000;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 2px;
+    margin: 1em;
+    padding: 0.5em;
     border: 1px solid pink;
     border-radius: 4px;
     box-sizing: border-box;
+    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
 .afegircan input[type="submit"] {

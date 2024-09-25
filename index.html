@@ -9,15 +9,29 @@
 </head>
 
 <body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="img/fondo.mp4" type="video/mp4">
+    </video>
+
+    <audio id="audio" loop controls>
+        <source src="audio/musica_inicio.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="audio-controls">
+        <button onclick="document.getElementById('audio').play()"><img src="img/nota_musica.png" id="musica"></button>
+        <button onclick="document.getElementById('audio').pause()"><img src="img/pausa.png" id="musica"></button>
+        <audio id="audio" loop>
+            <source src="audio/musica_inicio.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
     <header class="header">
         <h1 class="titol">StepMania</h1>
     </header>
 
     <nav class="nav">
-        <h2>Jugar</h2>
-        <h2>Afegir Cançó</h2>
-        <h2>Editar Cançó</h2>
-        <h2>Sortir</h2>
+        <a>Versió: StepMania 0.0.1</a>
     </nav>
 
     <div class="div">
@@ -27,21 +41,24 @@
                 <li>...</li>
                 <li>...</li>
                 <li>...</li>
-                <li>...</li>  
+                <li>...</li>
             </ul>
         </aside>
 
     </div>
 
     <div class="menu">
-            <button class="bmenu">Jugar</button>
-            <button class="bmenu" onclick="window.location.href='formacanco.html'">Afefir Cançó</a></button>
-            <button class="bmenu" onclick="window.location.href='editcan.html'">Editar Cançó</button>
-            <button class="bmenu" onclick="window.close()">Sortir</button>
+        <button class="bmenu">Jugar</button>
+        <button class="bmenu" onclick="window.location.href='formacanco.html'">Afefir Cançó</a></button>
+        <button class="bmenu" onclick="window.location.href='editcan.html'">Editar Cançó</button>
+        <button class="bmenu" onclick="window.location.href='classificacio.html'">Classificació</button>
     </div>
 
     <footer>
         <h3>Footer</h3>
+        <p><a
+                href="https://www.freepik.es/video-gratis/grafico-movimiento-colorido-retro-paisaje-futurista-fondo_3294942#fromView=search&page=2&position=40&uuid=9e4ff36a-322a-4143-87bc-40fe60dcb04c">Vídeo
+                de freepik</a></a></p>
     </footer>
 </body>
 
