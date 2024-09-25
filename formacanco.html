@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Afegir Cançó</title>
+</head>
+
+<body>
+
+    <header class="header2">
+        <nav class="nav2">
+                <a href="index.html">
+                    <img src="img/home.png" alt="home">
+                </a>
+        </nav>
+    </header>
+
+        <form action="afegircanco.php" method="post">
+            <div class="afegircan">
+                <h3>Títol de la cançó<input type="text" name="titol"><br></h3>
+                <h3>Artista<input type="text" name="artista"><br></h3>
+                <h3>Fitxer de música<input type="file" name="fmusic" accept="audio/*"><br></h3>
+                <h3>Fitxer de caràtula<input type="file" name="fcarat" accept="image/*"><br></h3>
+                <h3>Fitxer de joc<input type="file" name="fjoc"><br></h3>
+                <h3><input type="submit" class="enviar"></h3>
+            </div>
+        </form>
+</body>
+
+</html>

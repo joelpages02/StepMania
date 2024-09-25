@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+
+
+* {
+    font-family: 'Irish grover';
+}
+
+body {
+    background-image: url("img/fons.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 1%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+header h1 {
+    color: pink;
+    border-radius: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+.titol {
+    display: flex;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    border: none;
+    color: rgb(240, 136, 216);
+    text-decoration: normal;
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    white-space: pre;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
+    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.titol:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px palevioletred, 0 0 70px palevioletred, 0 0 80px palevioletred, 0 0 100px palevioletred;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+nav h2 {
+    color: pink;
+    font-size: 75%;
+    margin-right: 2em;
+}
+
+nav h2:last-child {
+    margin-right: 0;
+}
+
+/*div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10%;
+    background-color: gray;
+    margin-top: 1%;
+    flex: 1;
+} */
+
+aside {
+    display: flex;
+    justify-content: flex-start;
+    justify-items: flex-start;
+}
+
+aside li {
+    color: pink;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.bmenu {
+    width: 15%;
+    border-radius: 100%;
+    padding: 5px 10px;
+    font-size: 19px;
+    border: 4px ridge pink;
+    background-color: #000000;
+    padding: 10px 50px;
+    color: pink;
+    cursor: pointer;
+    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
+}
+
+.menu .bmenu:hover {
+    background-color: palevioletred;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.5em 0;
+}
+
+footer h3 {
+    color: pink;
+    margin: 0;
+}
+
+/* Formulari afegir cançó */
+
+.header2{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.nav2 img{
+    width: 20px;
+    height: 20px;
+}
+
+.afegircan {
+    background-color: black;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid pink;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.afegircan h3 {
+    color: pink;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.afegircan input[type="text"],
+.afegircan input[type="file"],
+.afegircan input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 2px;
+    border: 1px solid pink;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.afegircan input[type="submit"] {
+    cursor: pointer;
+}
