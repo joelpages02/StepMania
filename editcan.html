@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Editar Cançó</title>
+</head>
+
+<body>
+
+    <video autoplay muted loop class="bg-video">
+        <source src="img/fondo.mp4" type="video/mp4">
+    </video>
+
+    <header class="header2">
+        <h1>Editar Cançó</h1>
+    </header>
+        <nav class="nav2">
+            <a href="index.html">
+                <img src="img/home.png" alt="home">
+            </a>
+        </nav>
+
+    <form action="afegircanco.php" method="post">
+        <div class="afegircan">
+            <ul>
+                <li>Títol de la cançó<input type="text" name="titol"><br></li>
+                <li>Artista<input type="text" name="artista"><br></li>
+                <li>Fitxer de música<input type="file" name="fmusic" accept="audio/*"><br></li>
+                <li>Fitxer de caràtula<input type="file" name="fcarat" accept="image/*"><br></li>
+                <li>Fitxer de joc<input type="file" name="fjoc" accept="text"><br></li>
+                <li>Descripció<textarea name="descripcio" rows="4" cols="50" placeholder="..."></textarea><br></li>
+                <li><input type="submit" class="enviar"></li>
+            </ul>
+        </div>
+    </form>
+</body>
+
+</html>

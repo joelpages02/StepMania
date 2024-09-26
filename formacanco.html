@@ -10,30 +10,63 @@
 
 <body>
 
-    <video autoplay muted loop id="bg-video">
+    <video autoplay muted loop class="bg-video">
         <source src="img/fondo.mp4" type="video/mp4">
     </video>
 
     <header class="header2">
-        <nav class="nav2">
-            <a href="index.html">
-                <img src="img/home.png" alt="home">
-            </a>
-        </nav>
+        <h1>Afegir Cançó</h1>
     </header>
+    <nav class="nav2">
+        <a href="index.html">
+            <img src="img/home.png" alt="home">
+        </a>
+    </nav>
 
-    <form action="afegircanco.php" method="post">
+    <form action="afegircanco.php" method="post" enctype="multipart/form-data">
         <div class="afegircan">
             <ul>
                 <li>Títol de la cançó<input type="text" name="titol"><br></li>
                 <li>Artista<input type="text" name="artista"><br></li>
                 <li>Fitxer de música<input type="file" name="fmusic" accept="audio/*"><br></li>
                 <li>Fitxer de caràtula<input type="file" name="fcarat" accept="image/*"><br></li>
-                <li>Fitxer de joc<input type="file" name="fjoc"><br></li>
+                <li>Fitxer de joc<input type="file" name="fjoc" accept="text"><br></li>
+                <li>Descripció<textarea name="descripcio" rows="4" cols="50" placeholder="..."></textarea><br></li>
                 <li><input type="submit" class="enviar"></li>
             </ul>
         </div>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function (event) {
+                const titol = document.querySelector('input[name="titol"]').value;
+                const artista = document.querySelector('input[name="artista"]').value;
+                const fmusic = document.querySelector('input[name="fmusic"]').files[0];
+                const fcarat = document.querySelector('input[name="fcarat"]').files[0];
+                const fjoc = document.querySelector('input[name="fjoc"]').files[0];
+                const descripcio = document.querySelector('textarea[name="descripcio"]').value;
+
+                // Validar campos
+                if (!titol || !artista || !fmusic || !fcarat) {
+                    alert('Todos los campos son obligatorios.');
+                    event.preventDefault();  // Evitar el envío del formulario
+                    return;
+                }
+
+                // Validar tipo de archivo de música
+                const allowedMusicTypes = ['audio/mpeg', 'audio/wav'];
+                if (!allowedMusicTypes.includes(fmusic.type)) {
+                    alert('Solo se permiten archivos de música en formato MP3 o WAV.');
+                    event.preventDefault();  // Evitar el envío del formulario
+                    return;
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
