@@ -38,7 +38,7 @@ if (!is_array($songs)) {
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="llista-cancions"> <!-- Cambiado a la clase correcta -->
+<body class="llista-cancions">
     <video autoplay muted loop class="bg-video">
         <source src="img/fondo.mp4" type="video/mp4">
     </video>
@@ -48,7 +48,7 @@ if (!is_array($songs)) {
     </header>
     <nav class="nav2">
         <a href="index.html">
-            <img src="img/home.png" alt="home">
+        <span class="tabler--home-filled"></span>
         </a>
     </nav>
 
@@ -57,7 +57,7 @@ if (!is_array($songs)) {
             <?php
             // Mostrar canciones desde el archivo JSON
             if (empty($songs)) {
-                echo "<li>No hay canciones disponibles o ocurrió un error al cargar el archivo.</li>";
+                echo "<li>No hi ha cançons disponibles.</li>";
             } else {
                 // Inicializar el contador
                 $counter = 1; 
@@ -72,7 +72,6 @@ if (!is_array($songs)) {
                     // Mostrar información de la canción con número
                     echo "<li>Cançó $counter:</li>"; // Mostrar el número de la canción
                     echo "<li>Títul: $title</li>";
-                    echo "<li>Nom de la Cançó: $music</li>";
                     echo "<li>Artista: $artist</li>";
                     if ($cover) {
                         echo "<li>Caràtula: <img src='$cover' alt='Carátula' style='width:100px; height:auto;'></li>";

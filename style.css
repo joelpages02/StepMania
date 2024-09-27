@@ -195,11 +195,6 @@ footer h3 {
     padding: 10px;
 }
 
-.nav2 img {
-    width: 20px;
-    height: 20px;
-}
-
 .afegircan {
     background-color: rgba(0, 0, 0, 0.494);
     width: 50em;
@@ -338,3 +333,44 @@ body.llista-cancions {
 .llistac li.success-message {
     color: green; /* Color para mensajes de éxito */
 }
+
+.gravity-ui--play-fill {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='none'%3E%3Cg clip-path='url(%23gravityUiPlayFill0)'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M14.756 10.164c1.665-.962 1.665-3.366 0-4.329L6.251.918C4.585-.045 2.5 1.158 2.5 3.083v9.834c0 1.925 2.085 3.128 3.751 2.164z' clip-rule='evenodd'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='gravityUiPlayFill0'%3E%3Cpath fill='%23000' d='M0 0h16v16H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/g%3E%3C/svg%3E");
+    background-color: currentColor;
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+  .iconamoon--player-pause-fill {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffc0cb' fill-rule='evenodd' d='M4 7a3 3 0 0 1 3-3h1a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3zm12-3a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+  .tabler--home-filled {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffc0cb' d='m12.707 2.293l9 9c.63.63.184 1.707-.707 1.707h-1v6a3 3 0 0 1-3 3h-1v-7a3 3 0 0 0-2.824-2.995L13 12h-2a3 3 0 0 0-3 3v7H7a3 3 0 0 1-3-3v-6H3c-.89 0-1.337-1.077-.707-1.707l9-9a1 1 0 0 1 1.414 0M13 14a1 1 0 0 1 1 1v7h-4v-7a1 1 0 0 1 .883-.993L11 14z'/%3E%3C/svg%3E");
+  }
+
+  .streamline--song-recommendation-solid {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23ffc0cb' fill-rule='evenodd' d='M5.293.19a.59.59 0 0 0-.475.254a1 1 0 0 0-.125.25c-.043.12-.08.275-.113.412l-.013.049c-.084.346-.166.627-.283.786a.9.9 0 0 1-.261.205a4 4 0 0 1-.473.231l-.126.054a7 7 0 0 0-.355.159c-.068.033-.155.08-.23.14a.6.6 0 0 0-.242.47c0 .274.194.43.241.468c.076.06.163.107.23.141c.101.05.232.106.356.159l.126.054c.172.074.334.149.473.23a.9.9 0 0 1 .26.206c.118.159.2.44.284.786l.013.05c.033.135.07.29.113.41a1 1 0 0 0 .125.25c.06.084.213.254.475.254c.263 0 .416-.17.476-.253a1 1 0 0 0 .125-.25c.043-.121.08-.276.113-.412l.012-.05c.085-.345.167-.626.284-.785a.9.9 0 0 1 .261-.205a4 4 0 0 1 .472-.231l.127-.054c.124-.053.255-.109.355-.159c.068-.034.155-.08.23-.14a.6.6 0 0 0 .242-.47a.6.6 0 0 0-.241-.468a1.3 1.3 0 0 0-.231-.141c-.1-.05-.231-.106-.355-.159l-.127-.054a4 4 0 0 1-.472-.23a.9.9 0 0 1-.26-.206c-.118-.159-.2-.44-.285-.786l-.012-.05a5 5 0 0 0-.113-.41a1 1 0 0 0-.125-.251a.59.59 0 0 0-.476-.253Zm.418 7.218a1.75 1.75 0 0 0 1.29-1.319v.001l.005-.019a5 5 0 0 1 .115-.406a4 4 0 0 1 .163-.417l.014-.01c.081-.055.194-.12.327-.187a6 6 0 0 1 .452-.202l.022-.01a1.75 1.75 0 0 0 .942-.83l3.417-.948l.005-.001a1.12 1.12 0 0 1 1.412 1.057v5.827a2.09 2.09 0 1 1-1.5-2.058v-1.45L7.21 7.87v3.937a2.09 2.09 0 1 1-1.5-2.005V7.408ZM1.963 5.899a.75.75 0 0 1 .75.75v.384h.384a.75.75 0 1 1 0 1.5h-.384v.384a.75.75 0 0 1-1.5 0v-.384H.829a.75.75 0 1 1 0-1.5h.384V6.65a.75.75 0 0 1 .75-.75Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  }
