@@ -6,12 +6,12 @@ $songs = [];
 // Cargar el archivo JSON si existe
 if (file_exists($jsonFile)) {
     $jsonContent = file_get_contents($jsonFile);
-    
+
     if ($jsonContent === false) {
         $_SESSION['error'] = "No se pudo leer el archivo JSON.";
     } else {
         $songs = json_decode($jsonContent, true); // Decodificar como array
-        
+
         // Verificar errores en la decodificación
         if (json_last_error() !== JSON_ERROR_NONE) {
             $_SESSION['error'] = "Error al decodificar el JSON: " . json_last_error_msg();
@@ -48,7 +48,7 @@ if (!is_array($songs)) {
     </header>
     <nav class="nav2">
         <a href="index.html">
-        <span class="tabler--home-filled"></span>
+            <span class="tabler--home-filled"></span>
         </a>
     </nav>
 
@@ -60,8 +60,8 @@ if (!is_array($songs)) {
                 echo "<li>No hi ha cançons disponibles.</li>";
             } else {
                 // Inicializar el contador
-                $counter = 1; 
-                
+                $counter = 1;
+
                 foreach ($songs as $song) {
                     // Asegurarse de que cada campo esté presente
                     $title = isset($song['title']) ? htmlspecialchars($song['title']) : 'Título no disponible';
@@ -86,15 +86,21 @@ if (!is_array($songs)) {
 
             // Mostrar mensajes de éxito
             if (isset($_SESSION['success'])) {
-                foreach ($_SESSION['success'] as $message) {
-                    echo "<li>$message</li>";
+                if (is_array($_SESSION['success'])) {
+                    foreach ($_SESSION['success'] as $message) {
+                        echo "<li>$message</li>";
+                    }
+                } else {
+                    // Si no es un array, imprime el valor directamente
+                    echo "<li>" . $_SESSION['success'] . "</li>";
                 }
                 unset($_SESSION['success']); // Limpiar mensajes después de mostrarlos
             }
 
+
             // Mostrar mensajes de error
             if (isset($_SESSION['error'])) {
-                echo "<li style='color:red;'>".$_SESSION['error']."</li>";
+                echo "<li style='color:red;'>" . $_SESSION['error'] . "</li>";
                 unset($_SESSION['error']); // Limpiar mensaje de error después de mostrarlo
             }
             ?>

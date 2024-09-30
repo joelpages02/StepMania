@@ -285,7 +285,6 @@ input, textarea {
 
 /* Estilos generales para el cuerpo */
 body.llista-cancions {
-    font-family: Arial, sans-serif;
     background-color: #1e1e2f;
     color: #ffffff;
     margin: 0; /* Elimina el margen */
