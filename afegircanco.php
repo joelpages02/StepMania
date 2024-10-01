@@ -39,17 +39,6 @@ if (isset($_FILES['fmusic'])) {
     $fileMusicExt = strtolower(pathinfo($fileMusicName, PATHINFO_EXTENSION));
     $allowedMusic = ['mp3', 'wav'];
 
-    if ($fileMusicError !== UPLOAD_ERR_OK) {
-        $_SESSION['error'] = "Error al subir el archivo de música: " . $fileMusicError;
-        header('Location: llistacanc.php');
-        exit();
-    }
-
-    if (!in_array($fileMusicExt, $allowedMusic)) {
-        $_SESSION['error'] = "Solo se permiten archivos de música en formato MP3 o WAV.";
-        header('Location: llistacanc.php');
-        exit();
-    }
 
     $newMusicName = uniqid('', true) . "." . $fileMusicExt;
     $musicDestination = $musicDir . $newMusicName;
@@ -71,12 +60,6 @@ if (isset($_FILES['fcarat'])) {
     $fileCoverError = $fileCover['error'];
     $fileCoverExt = strtolower(pathinfo($fileCoverName, PATHINFO_EXTENSION));
     $allowedCover = ['jpg', 'jpeg', 'png', 'gif'];
-
-    if ($fileCoverError !== UPLOAD_ERR_OK) {
-        $_SESSION['error'] = "Error al subir el archivo de carátula: " . $fileCoverError;
-        header('Location: llistacanc.php');
-        exit();
-    }
 
     if (!in_array($fileCoverExt, $allowedCover)) {
         $_SESSION['error'] = "Solo se permiten archivos de carátula en formato JPG, JPEG, PNG o GIF.";
@@ -105,9 +88,6 @@ $songs[] = [
 
 // Guardar los datos en el archivo JSON
 file_put_contents($jsonFile, json_encode($songs));
-
-// Guardar mensajes en la sesión
-$_SESSION['success'] = "Canción añadida exitosamente.";
 
 // Redirigir a la lista
 header('Location: llistacanc.php');

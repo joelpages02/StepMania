@@ -1,43 +1,36 @@
 <?php
+// Mostrar errores para depuración
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
+
 $jsonFile = 'basecanc.json';
 $songs = [];
 
 // Cargar el archivo JSON si existe
 if (file_exists($jsonFile)) {
     $jsonContent = file_get_contents($jsonFile);
+    $songs = json_decode($jsonContent, true);  // Decodificar como array asociativo
 
-    if ($jsonContent === false) {
-        $_SESSION['error'] = "No se pudo leer el archivo JSON.";
-    } else {
-        $songs = json_decode($jsonContent, true); // Decodificar como array
-
-        // Verificar errores en la decodificación
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            $_SESSION['error'] = "Error al decodificar el JSON: " . json_last_error_msg();
-            $songs = []; // Reiniciar a array vacío si hay error
-        }
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        $_SESSION['error'] = "Error al decodificar el JSON: " . json_last_error_msg();
     }
 } else {
     $_SESSION['error'] = "El archivo JSON no existe.";
 }
 
-// Verificar que $songs sea un array antes de usar foreach
-if (!is_array($songs)) {
-    $songs = []; // Asegúrate de que $songs sea un array vacío si la carga falla
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Llistat de Cançons</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="llista-cancions">
     <video autoplay muted loop class="bg-video">
         <source src="img/fondo.mp4" type="video/mp4">
@@ -62,7 +55,7 @@ if (!is_array($songs)) {
                 // Inicializar el contador
                 $counter = 1;
 
-                foreach ($songs as $song) {
+                foreach ($songs as $index => $song) {
                     // Asegurarse de que cada campo esté presente
                     $title = isset($song['title']) ? htmlspecialchars($song['title']) : 'Título no disponible';
                     $music = isset($song['music']) ? htmlspecialchars($song['music']) : 'Nombre no disponible';
@@ -79,6 +72,14 @@ if (!is_array($songs)) {
                         echo "<li>Caràtula: No disponible</li>";
                     }
 
+                    // Formulario para eliminar la canción
+                    echo "
+                    <form action='eliminarcanco.php' method='post'>
+                        <input type='hidden' name='song_index' value='$index'>
+                        <button type='submit'>Eliminar Cançó</button>
+                    </form>
+                    ";
+
                     // Incrementar el contador
                     $counter++;
                 }
@@ -91,12 +92,10 @@ if (!is_array($songs)) {
                         echo "<li>$message</li>";
                     }
                 } else {
-                    // Si no es un array, imprime el valor directamente
                     echo "<li>" . $_SESSION['success'] . "</li>";
                 }
                 unset($_SESSION['success']); // Limpiar mensajes después de mostrarlos
             }
-
 
             // Mostrar mensajes de error
             if (isset($_SESSION['error'])) {
@@ -107,5 +106,4 @@ if (!is_array($songs)) {
         </ul>
     </div>
 </body>
-
 </html>
