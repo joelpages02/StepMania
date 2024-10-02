@@ -43,6 +43,10 @@ if (file_exists($jsonFile)) {
         <a href="index.html">
             <span class="tabler--home-filled"></span>
         </a>
+
+        <a href="formacanco.html">
+            <span class="streamline--song-recommendation-solid"></span>
+        </a>
     </nav>
 
     <div class="llistac">
@@ -53,7 +57,7 @@ if (file_exists($jsonFile)) {
                 echo "<li>No hi ha cançons disponibles.</li>";
             } else {
                 // Inicializar el contador
-                $counter = 1;
+                $count = 1;
 
                 foreach ($songs as $index => $song) {
                     // Asegurarse de que cada campo esté presente
@@ -63,7 +67,7 @@ if (file_exists($jsonFile)) {
                     $cover = isset($song['cover']) ? htmlspecialchars($song['cover']) : '';
 
                     // Mostrar información de la canción con número
-                    echo "<li>Cançó $counter:</li>"; // Mostrar el número de la canción
+                    echo "<li>Cançó $count:</li>"; // Mostrar el número de la canción
                     echo "<li>Títul: $title</li>";
                     echo "<li>Artista: $artist</li>";
                     if ($cover) {
@@ -80,8 +84,14 @@ if (file_exists($jsonFile)) {
                     </form>
                     ";
 
+                    echo "
+                    <form action='editcan.php?title={$title}&&artist={$artist}' method='post'>
+                        <input type='hidden' name='son_index' value='$index'>
+                        <button type='submit'>Editar</button>
+                    ";
+
                     // Incrementar el contador
-                    $counter++;
+                    $count++;
                 }
             }
 

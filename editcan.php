@@ -8,8 +8,12 @@ $jsonData = file_get_contents($jsonFile);
 // Decodificar el JSON en un array asociativo de PHP
 $songs = json_decode($jsonData, true);
 
-// Obtener los datos de la primera canción para precargar los campos
-$selectedSong = !empty($songs) ? $songs[0] : null; // Puedes ajustar el índice para seleccionar otras canciones
+// Obtener el ID de la canción desde la URL
+$title = isset($_GET['title']) ? $_GET['title'] : ' ';
+$artist = isset($_GET['artist']) ? $_GET['artist']: ' ';
+
+// Obtener la canción seleccionada según el ID
+$selectedSong = isset($songs[$title]) ? $songs[$title] : null;
 ?>
 
 <!DOCTYPE html>
@@ -42,25 +46,22 @@ $selectedSong = !empty($songs) ? $songs[0] : null; // Puedes ajustar el índice 
     </nav>
 
     <!-- Formulario de edición -->
-    <form action="guardar_cambios.php" method="post" enctype="multipart/form-data" class="afegircan">
+    <form action="guardar_cambis.php" method="post" enctype="multipart/form-data" class="afegircan">
         <div>
             <label for="title">Títol de la cançó:</label>
-            <input type="text" id="title" name="title" class="input-field" value="<?php echo isset($selectedSong['title']) ? htmlspecialchars($selectedSong['title']) : ''; ?>"><br>
+            <input type="text" id="title" name="title" class="input-field" value="<?= $title ?>"><br>
 
             <label for="artist">Artista:</label>
-            <input type="text" id="artist" name="artist" class="input-field" value="<?php echo isset($selectedSong['artist']) ? htmlspecialchars($selectedSong['artist']) : ''; ?>"><br>
-
-            <label for="music">Fitxer de música actual:</label>
-            <input type="text" id="music" name="music" class="input-field" value="<?php echo isset($selectedSong['music']) ? htmlspecialchars($selectedSong['music']) : ''; ?>" readonly><br>
+            <input type="text" id="artist" name="artist" class="input-field" value="<?= $artist ?>"><br>
 
             <label for="fmusic">Subir nueva música:</label>
             <input type="file" id="fmusic" name="fmusic" class="input-field" accept="audio/*"><br>
 
             <label for="fcarat">Caràtula actual:</label><br>
-            <?php if (isset($selectedSong['cover'])): ?>
-                <img src="<?php echo htmlspecialchars($selectedSong['cover']); ?>" alt="Carátula" style="width:100px; height:auto;"><br>
-            <?php endif; ?>
             <input type="file" id="fcarat" name="fcarat" class="input-field" accept="image/*"><br>
+
+            <label for="fjoc">Fitxer de joc nou:</label>
+            <input type="file" id="fjoc" name="fjoc" class="input-field" accept="joc/*"><br>
 
             <label for="descripcio">Descripció:</label><br>
             <textarea id="descripcio" name="descripcio" class="input-field" rows="4" cols="50"><?php echo isset($selectedSong['description']) ? htmlspecialchars($selectedSong['description']) : ''; ?></textarea><br>

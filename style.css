@@ -41,30 +41,20 @@ header {
     justify-content: center;
 }
 
-header h1 {
-    color: pink;
+.titol{
+    font-size: 50px;
     border-radius: 15%;
-    display: flex;
-    justify-content: center;
 }
 
 .titol {
-    display: flex;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 10px;
     border: none;
     color: rgb(240, 136, 216);
-    text-decoration: normal;
     text-align: center;
-    -o-text-overflow: clip;
     text-overflow: clip;
     white-space: pre;
     text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
-    -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
-    -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
     transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 }
 
@@ -148,13 +138,13 @@ aside li {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 200px;
     height: 50px;
     border-radius: 25px;
     padding: 0;
     font-size: 16px;
     border: 4px ridge pink;
-    background-color: #000000;
+    background-color: #0000006d;
     color: pink;
     cursor: pointer;
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
@@ -167,7 +157,7 @@ aside li {
 }
 
 footer {
-    position: fixed;
+    /*position: fixed;*/
     margin-top: 10em;
     left: 0;
     bottom: 0;
@@ -184,6 +174,7 @@ footer h3 {
 /* Estils formulari afegir cançó i editar */
 
 .header2 {
+    color: pink;
     display: flex;
     justify-content: center;
     padding: 10px;
@@ -381,4 +372,13 @@ body.llista-cancions {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='%23ffc0cb' fill-rule='evenodd' clip-rule='evenodd'%3E%3Cpath d='M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352z'/%3E%3Cpath d='M19.846 4.318a2.2 2.2 0 0 0-.437-.692a2 2 0 0 0-.654-.463a1.92 1.92 0 0 0-1.544 0a2 2 0 0 0-.654.463l-.546.578l2.852 3.02l.546-.579a2.1 2.1 0 0 0 .437-.692a2.24 2.24 0 0 0 0-1.635M17.45 8.721L14.597 5.7L9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.5.5 0 0 0 .255-.145l4.778-5.06Z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .streamline--music-folder-song-solid {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23ffc0cb' fill-rule='evenodd' d='M5.183.25a1.5 1.5 0 0 1 1.492 1.14l.215.86h5.61a1.5 1.5 0 0 1 1.5 1.5v8.5a1.5 1.5 0 0 1-1.5 1.5h-11a1.5 1.5 0 0 1-1.5-1.5V1.75A1.5 1.5 0 0 1 1.5.25zM9.48 4.48a1 1 0 0 0-.438.015l-.005.002l-3.472.963a.97.97 0 0 0-.712.927V8.75a1.535 1.535 0 1 0 1.501 1.535V6.991l2.407-.669v1.303h-.034A1.536 1.536 0 1 0 10.26 9.11l-.001-3.683v-.004a.966.966 0 0 0-.78-.943Z' clip-rule='evenodd'/%3E%3C/svg%3E");
   }
