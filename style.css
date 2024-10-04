@@ -6,11 +6,14 @@
 }
 
 body {
+    overflow: hidden;
     background-image: url("img/fondo.mp4");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    width: 100%;
+    height: 100%;
     margin: 1%;
 }
 
@@ -65,6 +68,7 @@ header {
 nav {
     display: flex;
     justify-content: flex-end;
+    margin: 1.5em;
 
 }
 
@@ -187,69 +191,79 @@ footer h3 {
 }
 
 .afegircan {
-    background-color: rgba(0, 0, 0, 0.494);
-    width: 50em;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparencia ajustada para un mejor contraste */
+    width: 90%; /* Ancho reducido al 90% del contenedor principal */
+    max-width: 60em; /* Límite máximo para pantallas grandes */
+    height: auto; /* Ajuste de la altura dinámica */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
-    padding: 1em;
-    border: 0.1em solid pink;
+    padding: 1em; /* Espaciado adicional interno */
+    border: 0.2em solid pink; /* Bordes más definidos */
     border-radius: 1em;
-    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
+    box-shadow: 0 0 10px 3px #FF1493; /* Sombra para dar efecto neón */
 }
 
-.afegircan ul{
+.afegircan ul {
     padding: 0;
-    margin: 0;
+    width: 100%;
+    max-width: 40em; /* Limitar el ancho del formulario */
 }
 
-.afegircan ul li {
+.afegircan li {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    align-items: flex-start; /* Alinear a la izquierda para mejor lectura */
+    flex-direction: column; /* Los elementos uno debajo del otro */
     color: pink;
-    text-align: center;
+    text-align: left; /* Alineación del texto a la izquierda */
+    margin-bottom: 1.5em; /* Espacio entre campos */
     list-style: none;
 }
 
-.afegircan input{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-input, textarea {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: pink;
-    border: none;
-    background: transparent;
-    outline: none;
-    padding: 1em;
-    font-size: 16px;
-    box-sizing: border-box;
+/* Estilo general del placeholder */
+.afegircan input::placeholder, 
+.afegircan textarea::placeholder {
+    color: rgba(255, 182, 193, 0.7); /* Color rosa claro translúcido */
+    font-style: italic; /* Opción: puedes usar cursiva para distinguirlo del texto normal */
 }
 
 .afegircan input[type="text"],
 .afegircan input[type="file"],
-.afegircan input[type="submit"] {
-    background-color: #000000;
-    width: 100%;
-    margin: 1em;
-    padding: 0.5em;
-    border: 1px solid pink;
-    border-radius: 4px;
-    box-sizing: border-box;
-    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
+.afegircan textarea {
+    width: 100%; /* Hacer que los inputs ocupen todo el ancho disponible */
+    padding: 0.5em; /* Espaciado interno */
+    border: 0.1em solid pink; /* Bordes rosas para seguir con el tema */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido para inputs */
+    color: pink; /* Texto blanco */
+    border-radius: 0.5em; /* Bordes redondeados */
+    box-shadow: 0 0 5px pink; /* Sombra interna de los inputs */
+}
+
+.afegircan textarea {
+    resize: none; /* Eliminar el ajuste de tamaño manual */
 }
 
 .afegircan input[type="submit"] {
+    width: 100%; /* Botón ocupa todo el ancho disponible */
+    max-width: 20em; /* Limitar ancho máximo del botón */
+    padding: 0.8em 0; /* Ajustar el espaciado para mantenerlo dentro del contenedor */
+    background-color: #FF1493;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
     cursor: pointer;
+    box-shadow: 0 0 7px 2px pink;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Centrar el texto del botón */
 }
+
+.afegircan input[type="submit"]:hover {
+    background-color: #FF69B4;
+    box-shadow: 0 0 15px 5px #FF69B4;
+}
+
 
 /* Estils classificació */
 
@@ -325,6 +339,7 @@ body.llista-cancions {
 }
 
 .gravity-ui--play-fill {
+    position: absolute;
     display: inline-block;
     width: 1em;
     height: 1em;
@@ -339,6 +354,7 @@ body.llista-cancions {
   }
 
   .iconamoon--player-pause-fill {
+    position: absolute;
     display: inline-block;
     width: 1em;
     height: 1em;
@@ -348,6 +364,7 @@ body.llista-cancions {
   }
 
   .tabler--home-filled {
+    position: absolute;
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
@@ -357,6 +374,7 @@ body.llista-cancions {
   }
 
   .streamline--song-recommendation-solid {
+    position: absolute;
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
@@ -366,6 +384,7 @@ body.llista-cancions {
   }
 
   .flowbite--edit-solid {
+    position: absolute;
     display: inline-block;
     width: 1.5em;
     height: 1.5em;
@@ -375,6 +394,7 @@ body.llista-cancions {
   }
 
   .streamline--music-folder-song-solid {
+    position: absolute;
     display: inline-block;
     width: 1.5em;
     height: 1.5em;

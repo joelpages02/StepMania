@@ -23,7 +23,7 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Cançó</title>
-    <link rel="stylesheet" href="style.css"> <!-- Asegúrate de tener el archivo CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -32,9 +32,9 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
         <source src="img/fondo.mp4" type="video/mp4">
     </video>
 
-    <header class="header2">
+    <!--<header class="header2">
         <h1>Editar Cançó</h1>
-    </header>
+    </header>!-->
 
     <nav class="nav2">
         <a href="index.html">
@@ -46,13 +46,26 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
     </nav>
 
     <!-- Formulario de edición -->
-    <form action="guardar_cambis.php" method="post" enctype="multipart/form-data" class="afegircan">
+    <form action="guardarcambis.php" method="post" enctype="multipart/form-data">
+        <div class="afegircan">
+            <ul>
+                <li><input type="text" name="titol" placeholder="Títol de la cançó" value="<?= $title ?>"><br></li>
+                <li><input type="text" name="artista" placeholder="Artista" value="<?= $artist ?>"><br></li>
+                <li><input type="file" name="fmusic" accept="audio/*"><br></li>
+                <li><input type="file" name="fcarat" accept="image/*"><br></li>
+                <li><input type="file" name="fjoc" accept="text"><br></li>
+                <li><textarea name="descripcio" rows="4" cols="50" placeholder="Descripció..." <?php echo isset($selectedSong['description']) ? htmlspecialchars($selectedSong['description']) : ''; ?>></textarea><br></li>
+                <li><input type="submit" class="enviar" value="Guardar Canvis"></li>
+            </ul>
+        </div>
+    </form>
+    <!--<form action="guardar_cambis.php" method="post" enctype="multipart/form-data" class="afegircan">
         <div>
             <label for="title">Títol de la cançó:</label>
-            <input type="text" id="title" name="title" class="input-field" value="<?= $title ?>"><br>
+            <input type="text" id="title" name="title" class="input-field"<br>
 
             <label for="artist">Artista:</label>
-            <input type="text" id="artist" name="artist" class="input-field" value="<?= $artist ?>"><br>
+            <input type="text" id="artist" name="artist" class="input-field"<br>
 
             <label for="fmusic">Subir nueva música:</label>
             <input type="file" id="fmusic" name="fmusic" class="input-field" accept="audio/*"><br>
@@ -64,11 +77,11 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
             <input type="file" id="fjoc" name="fjoc" class="input-field" accept="joc/*"><br>
 
             <label for="descripcio">Descripció:</label><br>
-            <textarea id="descripcio" name="descripcio" class="input-field" rows="4" cols="50"><?php echo isset($selectedSong['description']) ? htmlspecialchars($selectedSong['description']) : ''; ?></textarea><br>
+            <textarea id="descripcio" name="descripcio" class="input-field" rows="4" cols="50"></textarea><br>
 
             <input type="submit" class="enviar" value="Guardar Canvis">
         </div>
-    </form>
+    </form>!-->
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
