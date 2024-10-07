@@ -191,6 +191,7 @@ footer h3 {
 }
 
 .afegircan {
+    max-height: 575px;
     background-color: rgba(0, 0, 0, 0.6); /* Transparencia ajustada para un mejor contraste */
     width: 90%; /* Ancho reducido al 90% del contenedor principal */
     max-width: 60em; /* Límite máximo para pantallas grandes */
@@ -291,20 +292,23 @@ footer h3 {
 /* Estilos generales para el cuerpo */
 body.llista-cancions {
     background-color: #1e1e2f;
-    color: #ffffff;
+    color: pink;
     margin: 0; /* Elimina el margen */
     padding: 0; /* Elimina el padding */
 }
 
 /* Contenedor principal de la lista de canciones */
 .llistac {
+    overflow-y: auto;
+    overflow-x: hidden;
     width: 80%;
     max-width: 1000px;
     margin: 20px auto; /* Centra el contenedor y le da un margen superior */
     padding: 20px;
-    background-color: rgba(44, 44, 59, 0.9); /* Fondo con un poco de transparencia */
+    background-color: rgba(44, 44, 59, 0.415); /* Fondo con un poco de transparencia */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para el contenedor */
+    max-height: 550px; /* Define la altura máxima */
 }
 
 /* Estilos para la lista de canciones */

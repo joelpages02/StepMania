@@ -38,9 +38,6 @@ if (file_exists($jsonFile)) {
         <source src="img/fondo.mp4" type="video/mp4">
     </video>
 
-    <header class="header2">
-        <h1>Llistat Cançons</h1>
-    </header>
     <nav class="nav2">
         <a href="index.html">
             <span class="tabler--home-filled"></span>
@@ -89,10 +86,13 @@ if (file_exists($jsonFile)) {
                     echo "
                     <form action='editcan.php?title={$title}&&artist={$artist}' method='post'>
                         <input type='hidden' name='son_index' value='$index'>
-                        <button type='submit'>Editar</button>
+                        <button type='submit'>Editar</button></form>
                     ";
+                    
+                    echo"
+                    <form action='joc.php' metohd='post'>
+                    <button type='submit'>Jugar</button></form>";
 
-                    // Incrementar el contador
                     $count++;
                 }
             }
