@@ -39,8 +39,15 @@ if (isset($_FILES['fmusic'])) {
     $fileMusicExt = strtolower(pathinfo($fileMusicName, PATHINFO_EXTENSION));
     $allowedMusic = ['mp3', 'wav'];
 
+     // Obtener el próximo número de música
+     if (!empty($songs)) {
+        $lastSong = end($songs);
+        $count = $lastSong['id'] + 1; // Incrementa el ID basado en la última canción
+    } else {
+        $count = 1; // Si no hay canciones, comienza desde 1
+    }
 
-    $newMusicName = uniqid('', true) . "." . $fileMusicExt;
+    $newMusicName = "musica_$count".".$fileMusicExt";
     $musicDestination = $musicDir . $newMusicName;
 
     if (move_uploaded_file($fileMusicTmpName, $musicDestination)) {
@@ -67,7 +74,7 @@ if (isset($_FILES['fcarat'])) {
         exit();
     }
 
-    $newCoverName = uniqid('', true) . "." . $fileCoverExt;
+    $newCoverName = "imatge_$count".".$fileCoverExt";
     $coverDestination = $coversDir . $newCoverName;
 
     if (!move_uploaded_file($fileCoverTmpName, $coverDestination)) {
@@ -77,8 +84,16 @@ if (isset($_FILES['fcarat'])) {
     }
 }
 
+if (!empty($songs)) {
+    $lastsong = end($songs);
+    $count = $lastsong['id'] + 1;
+} else {
+    $count = 1;
+}
+
 // Almacenar los datos de la canción
 $songs[] = [
+    'id' => $count,
     'title' => $title,
     'artist' => $artist,
     'music' => $newMusicName,
@@ -92,4 +107,3 @@ file_put_contents($jsonFile, json_encode($songs));
 // Redirigir a la lista
 header('Location: llistacanc.php');
 exit();
-?>

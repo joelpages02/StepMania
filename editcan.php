@@ -51,9 +51,18 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
             <ul>
                 <li><input type="text" name="titol" placeholder="Títol de la cançó" value="<?= $title ?>"><br></li>
                 <li><input type="text" name="artista" placeholder="Artista" value="<?= $artist ?>"><br></li>
-                <li><input type="file" name="fmusic" accept="audio/*"><br></li>
-                <li><input type="file" name="fcarat" accept="image/*"><br></li>
-                <li><input type="file" name="fjoc" accept="text"><br></li>
+                <div class="file-upload">
+                    <label for="musica" class="custom-file-label">Select music</label>
+                    <input type="file" id="musica" name="musica" accept="audio/*" class="file-input" required>
+                </div>
+                <div class="file-upload">
+                    <label for="musica" class="custom-file-label">Select Imatge</label>
+                    <input type="file" id="musica" name="musica" accept="audio/*" class="file-input" required>
+                </div>
+                <div class="file-upload">
+                    <label for="musica" class="custom-file-label">Select TXT</label>
+                    <input type="file" id="musica" name="musica" accept="audio/*" class="file-input" required>
+                </div>
                 <li><textarea name="descripcio" rows="4" cols="50" placeholder="Descripció..." <?php echo isset($selectedSong['description']) ? htmlspecialchars($selectedSong['description']) : ''; ?>></textarea><br></li>
                 <li><input type="submit" class="enviar" value="Guardar Canvis"></li>
             </ul>

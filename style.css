@@ -190,6 +190,24 @@ footer h3 {
     padding: 10px;
 }
 
+.custom-file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.162);
+    color: pink;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    width: 180px;
+}
+
+.custom-file-label:hover {
+    background-color: #f68585;
+}
+
 .afegircan {
     max-height: 575px;
     background-color: rgba(0, 0, 0, 0.6); /* Transparencia ajustada para un mejor contraste */
@@ -205,6 +223,10 @@ footer h3 {
     border: 0.2em solid pink; /* Bordes más definidos */
     border-radius: 1em;
     box-shadow: 0 0 10px 3px #FF1493; /* Sombra para dar efecto neón */
+}
+
+.file-input{
+    display: none;
 }
 
 .afegircan ul {
@@ -406,3 +428,57 @@ body.llista-cancions {
     background-size: 100% 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23ffc0cb' fill-rule='evenodd' d='M5.183.25a1.5 1.5 0 0 1 1.492 1.14l.215.86h5.61a1.5 1.5 0 0 1 1.5 1.5v8.5a1.5 1.5 0 0 1-1.5 1.5h-11a1.5 1.5 0 0 1-1.5-1.5V1.75A1.5 1.5 0 0 1 1.5.25zM9.48 4.48a1 1 0 0 0-.438.015l-.005.002l-3.472.963a.97.97 0 0 0-.712.927V8.75a1.535 1.535 0 1 0 1.501 1.535V6.991l2.407-.669v1.303h-.034A1.536 1.536 0 1 0 10.26 9.11l-.001-3.683v-.004a.966.966 0 0 0-.78-.943Z' clip-rule='evenodd'/%3E%3C/svg%3E");
   }
+
+.botonsllista{
+    display: flex;
+    flex-direction: row;
+}
+
+.bllista{
+    color: pink;
+    border: solid pink 2px;
+    background-color: rgba(0, 0, 0, 0.149);
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
+    margin: 10px;
+    display: flex;
+}
+
+.bllista:hover{
+    background-color: #f68585;
+}
+
+.cantual {
+    display: block;
+    align-content: flex-start;
+    position: absolute; /* Posicionar el elemento de forma absoluta */
+    left: 0; /* Fijar el elemento al lado izquierdo */
+    top: 50px;
+    margin: 50px;
+    width: 25%;
+    height: 75%;
+    background-color: rgba(0, 0, 0, 0.149);
+    border-radius: 20px;
+}
+
+.sonant{
+    display: block;
+    align-content: center;
+    margin: 10px;
+    color: pink;
+}
+
+.titulsonant{
+    display: block;
+    align-content: center;
+    margin: 10px;
+    color: pink;
+}
+
+.imgsonant{
+    display: block;
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
