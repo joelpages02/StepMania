@@ -35,10 +35,11 @@
             $id = isset($_GET['id']) ? intval($_GET['id']) : 0; // Obtiene el 'id' de la URL o usa 0 como predeterminado
 
             // Verifica que el ID esté dentro del rango de canciones
-            foreach($songs as $song) {
+            foreach ($songs as $song) {
                 if ($song['id'] === $id) {
                     $title = htmlspecialchars($song['title']); // Escoge el título según el ID seleccionado
                     $cover = htmlspecialchars($song['cover']);
+                    $artist = htmlspecialchars($song['artist']);
                     break;
                 }
             }
@@ -54,10 +55,20 @@
     }
     ?>
 
-    <div class="cantual">
-        <a class="sonant">Està sonant:<br></a>
-        <a class="titulsonant"><?= $title ?></a>
-        <img class="imgsonant" src="<?= $cover ?>">
+    <div class="jugar">
+        <div class="sonant">
+            <img class="imgsonant" src="<?= $cover ?>">
+            <a><?= $title?></a>
+            <a><?= $artist?></a>
+        </div>
+
+        <div class="pjoc">
+            <a></a>
+        </div>
+
+        <div class="punts">
+            <a>Punts:</a>
+        </div>
     </div>
 
 </body>
