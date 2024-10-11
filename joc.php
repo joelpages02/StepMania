@@ -10,9 +10,7 @@
 
 <body>
 
-    <video autoplay muted loop class="bg-video">
-        <source src="img/fondo.mp4" type="video/mp4">
-    </video>
+    
 
     <nav class="nav2">
         <a href="index.html">
@@ -57,13 +55,20 @@
 
     <div class="jugar">
         <div class="sonant">
+            <div class="csonant" >
             <img class="imgsonant" src="<?= $cover ?>">
             <a><?= $title?></a>
-            <a><?= $artist?></a>
+            <a>Artista: <?= $artist?></a>
+            </div>
         </div>
 
         <div class="pjoc">
-            <a></a>
+            <div class="fletxes">
+            <a><img src="img/fletxa_esquerra.png" class="imgfletxa"></a>
+            <a><img src="img/fletxa_adalt.png" class="imgfletxa"></a>
+            <a><img src="img/fletxa_baix.png" class="imgfletxa"></a>
+            <a><img src="img/fletxa_dreta.png" class="imgfletxa"></a>
+            </div>
         </div>
 
         <div class="punts">

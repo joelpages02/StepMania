@@ -28,10 +28,6 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
 
 <body>
 
-    <video autoplay muted loop class="bg-video">
-        <source src="img/fondo.mp4" type="video/mp4">
-    </video>
-
     <!--<header class="header2">
         <h1>Editar Cançó</h1>
     </header>!-->

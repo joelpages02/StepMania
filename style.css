@@ -7,7 +7,7 @@
 
 body {
     overflow: hidden;
-    background-image: url("img/fondo.mp4");
+    background-image: url("img/fondo1.gif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -339,6 +339,8 @@ footer h3 {
 
 /* Estilos generales para el cuerpo */
 body.llista-cancions {
+    overflow-y: auto;
+    overflow-x: hidden;
     background-color: #1e1e2f;
     color: pink;
     margin: 0;
@@ -347,62 +349,53 @@ body.llista-cancions {
     /* Elimina el padding */
 }
 
-/* Contenedor principal de la lista de canciones */
 .llistac {
-    overflow-y: auto;
-    overflow-x: hidden;
     width: 80%;
     max-width: 1000px;
     margin: 20px auto;
-    /* Centra el contenedor y le da un margen superior */
     padding: 20px;
-    background-color: rgba(44, 44, 59, 0.415);
-    /* Fondo con un poco de transparencia */
+    background-color: rgba(44, 44, 59, 0.829);
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    /* Sombra para el contenedor */
     max-height: 550px;
-    /* Define la altura máxima */
+    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
-/* Estilos para la lista de canciones */
-.llistac ul {
-    list-style-type: none;
-    /* Quitar puntos de la lista */
-    padding: 0;
-    /* Eliminar padding */
-}
-
-.llistac li {
+.llcancons{
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 15px;
-    /* Espaciado entre las canciones */
-    padding: 10px;
-    border-radius: 5px;
-    /* Bordes redondeados */
+    padding: 0;
+    width: auto;
+    margin: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 40px;
 }
 
-/* Estilo para las imágenes de carátula */
-.llistac img {
-    max-width: 100px;
-    /* Ancho máximo para las imágenes */
-    height: auto;
-    /* Mantener proporciones */
-    border-radius: 5px;
-    /* Bordes redondeados para las imágenes */
+.llistac ul{
+    padding: 0;
 }
 
-/* Estilo para mensajes de error */
+.llcancons li {
+    display: flex;
+    text-decoration: none;
+}
+
+.img-llista{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 10%;
+    border: solid pink 5px;
+    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
+
+}
 .llistac li[style*="color:red"] {
     font-weight: bold;
-    /* Resaltar mensajes de error */
 }
 
-/* Estilo para los mensajes de éxito */
 .llistac li.success-message {
     color: green;
-    /* Color para mensajes de éxito */
 }
 
 .gravity-ui--play-fill {
@@ -473,17 +466,19 @@ body.llista-cancions {
 .botonsllista {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly
 }
 
 .bllista {
     color: pink;
     border: solid pink 2px;
-    background-color: rgba(0, 0, 0, 0.149);
+    background-color: rgba(0, 0, 0, 0.188);
     border-radius: 50px;
     cursor: pointer;
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
     margin: 10px;
     display: flex;
+    font-size: 20px;
 }
 
 .bllista:hover {
@@ -497,7 +492,7 @@ body.llista-cancions {
     height: 35em;
     box-sizing: border-box;
     border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.149);
+    background-color: rgba(0, 0, 0, 0.365);
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
@@ -511,24 +506,60 @@ body.llista-cancions {
     align-items: center;
 }
 
-.sonant a{
+.csonant a{
     color: pink;
     margin: 1%;
+}
+
+.csonant{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 33.33%;
+    height: 100%;
+    align-items: flex-start;
 }
 
 .imgsonant{
     display: flex;
     margin: 1%;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    align-items: center;
+    height: auto;
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
 .pjoc{
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 33.33%;
 }
+
+.fletxes a {
+    display: inline-block; /* O flex si necesitas alineación adicional */
+    width: 100px; /* Tamaño del cuadrado */
+    height: 100px; /* Tamaño del cuadrado */
+    line-height: 50px; /* Centra verticalmente el contenido */
+    text-align: center; /* Centra horizontalmente el contenido */
+    margin: 5px; /* Espacio entre los cuadrados */
+    text-decoration: none; /* Opcional: elimina el subrayado del enlace */
+    color: transparent; /* Hace el punto invisible, pero mantiene el espacio */
+    border: 1px solid pink; /* Opcional: agrega un borde para visualizar los cuadrados */
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho y alto */
+    box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
+}
+
+
+.fletxes{
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    color: pink;
+}
+
+
 
 .punts{
     display: flex;
@@ -541,4 +572,11 @@ body.llista-cancions {
 .punts a{
     color: pink;
     margin: 1%;
+}
+
+.imgfletxa{
+    margin: 0;
+    padding: 22px;
+    width: 50px;
+    height: auto;
 }
