@@ -8,7 +8,7 @@
 /* Aplicar la font a tots els elements */
 body {
     overflow: hidden;
-    background-image: url("img/fondo1.gif");
+    background-image: url("/img/fondo1.gif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -584,4 +584,5 @@ body.llista-cancions {
     padding: 22px;
     width: 50px;
     height: auto;
+    display: none;
 }

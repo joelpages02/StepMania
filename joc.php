@@ -40,6 +40,7 @@
             foreach ($songs as $song) {
                 if ($song['id'] === $id) {
                     $title = htmlspecialchars($song['title']); // Escull el títol segons l'ID seleccionat
+                    $music = htmlspecialchars($song['music']);
                     $cover = htmlspecialchars($song['cover']);
                     $artist = htmlspecialchars($song['artist']);
                     break;
@@ -51,6 +52,11 @@
     }
     ?>
 
+    <script>
+        // Inyectar datos PHP directamente en JavaScript
+        const songData = <?php echo json_encode($songs); ?>;
+    </script>
+
     <!-- Secció per jugar -->
     <div class="jugar">
         <!-- Contenidor de la cançó que sona -->
@@ -59,9 +65,9 @@
                 <!-- Imatge de la coberta de la cançó -->
                 <img class="imgsonant" src="<?= $cover ?>">
                 <!-- Títol de la cançó -->
-                <a><?= $title?></a>
+                <a><?= $title ?></a>
                 <!-- Artista de la cançó -->
-                <a>Artista: <?= $artist?></a>
+                <a>Artista: <?= $artist ?></a>
             </div>
         </div>
 
@@ -83,6 +89,8 @@
             <a>Punts:</a>
         </div>
     </div>
+
+    <script src="joc_moviment.js"></script>
 
 </body>
 

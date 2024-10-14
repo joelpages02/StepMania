@@ -27,10 +27,14 @@ if (!is_dir($gameDir)) {
     mkdir($gameDir, 0755, true);
 }
 
-// Processa el formulari
-$title = $_POST['titol'] ?? 'Títol no disponible';
-$artist = $_POST['artista'] ?? 'Artista no disponible';
-$description = $_POST['descripcio'] ?? 'Descripció no disponible';
+// Verificar si se han enviado los datos del formulario
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Obtener los datos del formulario
+    $title = $_POST['titol'];
+    $artist = $_POST['artista'];
+    $description = $_POST['descripcio'];
+    $timingData = $_POST['timingData'];  // Contenido del archivo TXT
+}
 
 // Processa la pujada d'arxius de música
 if (isset($_FILES['fmusic'])) {
@@ -100,7 +104,8 @@ $songs[] = [
     'artist' => $artist,
     'music' => $newMusicName,
     'cover' => $coverDestination ?? null,
-    'description' => $description
+    'description' => $description,
+    'timingData' => $timingData
 ];
 
 // Guarda les dades en el fitxer JSON
