@@ -1,82 +1,84 @@
 <?php
-// Mostrar errores para depuración
+// Mostra errors per depuració
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Inicia la sessió
 session_start();
 
-// Archivo JSON donde se almacenan las canciones
+// Arxiu JSON on s'emmagatzemen les cançons
 $jsonFile = 'basecanc.json';
 $songs = [];
 
-// Cargar el archivo JSON si existe
+// Carrega l'arxiu JSON si existeix
 if (file_exists($jsonFile)) {
     $jsonContent = file_get_contents($jsonFile);
-    $songs = json_decode($jsonContent, true);  // Decodificar como array asociativo
+    $songs = json_decode($jsonContent, true);  // Decodifica com a array associatiu
 
+    // Comprova si hi ha hagut errors en la decodificació del JSON
     if (json_last_error() !== JSON_ERROR_NONE) {
-        $_SESSION['error'] = "Error al decodificar el JSON: " . json_last_error_msg();
+        $_SESSION['error'] = "Error en decodificar el JSON: " . json_last_error_msg();
         header('Location: llistacanc.php');
         exit;
     }
 } else {
-    $_SESSION['error'] = "El archivo JSON no existe.";
+    $_SESSION['error'] = "L'arxiu JSON no existeix.";
     header('Location: llistacanc.php');
     exit;
 }
 
-// Verificar que $songs sea un array antes de continuar
+// Verifica que $songs sigui un array abans de continuar
 if (!is_array($songs)) {
-    $songs = [];  // Si la decodificación falló, asegurarse de que sea un array vacío
+    $songs = [];  // Si la decodificació ha fallat, assegura't que sigui un array buit
 }
 
-// Eliminar canción del JSON y archivos del servidor
+// Eliminar cançó del JSON i arxius del servidor
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['song_index'])) {
-    $songIndex = (int)$_POST['song_index'];  // Índice de la canción a eliminar
+    $songIndex = (int)$_POST['song_index'];  // Índex de la cançó a eliminar
 
     if (isset($songs[$songIndex])) {
         $song = $songs[$songIndex];
 
-        // Construir rutas completas para los archivos de la canción y la carátula
+        // Construeix rutes completes per als arxius de la cançó i la caràtula
         $coverPath = __DIR__ . '/' . $song['cover'];
         $musicPath = __DIR__ . '/uploads/music/' . $song['music'];
 
-        // Eliminar archivo de la carátula si existe
+        // Elimina l'arxiu de la caràtula si existeix
         if (file_exists($coverPath)) {
             unlink($coverPath);
         } else {
-            $_SESSION['error'] = "No se encontró el archivo de la carátula: " . htmlspecialchars($song['cover']);
+            $_SESSION['error'] = "No s'ha trobat l'arxiu de la caràtula: " . htmlspecialchars($song['cover']);
         }
 
-        // Eliminar archivo de la música si existe
+        // Elimina l'arxiu de la música si existeix
         if (file_exists($musicPath)) {
             unlink($musicPath);
         } else {
-            $_SESSION['error'] = "No se encontró el archivo de la canción: " . htmlspecialchars($song['music']);
+            $_SESSION['error'] = "No s'ha trobat l'arxiu de la cançó: " . htmlspecialchars($song['music']);
         }
 
-        // Eliminar la canción del array
+        // Elimina la cançó de l'array
         unset($songs[$songIndex]);
 
-        // Reindexar el array de canciones
+        // Reindexa l'array de cançons
         $songs = array_values($songs);
 
-        // Guardar el nuevo contenido en el archivo JSON
+        // Guarda el nou contingut a l'arxiu JSON
         if (file_put_contents($jsonFile, json_encode($songs, JSON_PRETTY_PRINT)) === false) {
-            $_SESSION['error'] = "No se pudo guardar el archivo JSON actualizado.";
+            $_SESSION['error'] = "No s'ha pogut guardar l'arxiu JSON actualitzat.";
         } else {
-            $_SESSION['success'] = "La cancó s'ha eliminat correctament.";
+            $_SESSION['success'] = "La cançó s'ha eliminat correctament.";
         }
     } else {
-        $_SESSION['error'] = "Índice de canción no válido.";
+        $_SESSION['error'] = "Índex de cançó no vàlid.";
     }
 
-    // Redireccionar de nuevo a la página de listado de canciones
+    // Redirigeix de nou a la pàgina de llistat de cançons
     header('Location: llistacanc.php');
     exit;
 } else {
-    $_SESSION['error'] = "Solicitud no válida.";
+    $_SESSION['error'] = "Sol·licitud no vàlida.";
     header('Location: llistacanc.php');
     exit;
 }

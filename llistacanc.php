@@ -1,5 +1,5 @@
 <?php
-// Mostrar errores para depuración
+// Mostrar errors per a depuració
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -9,16 +9,16 @@ session_start();
 $jsonFile = 'basecanc.json';
 $songs = [];
 
-// Cargar el archivo JSON si existe
+// Carregar l'arxiu JSON si existeix
 if (file_exists($jsonFile)) {
     $jsonContent = file_get_contents($jsonFile);
-    $songs = json_decode($jsonContent, true);  // Decodificar como array asociativo
+    $songs = json_decode($jsonContent, true);  // Decodificar com a array associatiu
 
     if (json_last_error() !== JSON_ERROR_NONE) {
-        $_SESSION['error'] = "Error al decodificar el JSON: " . json_last_error_msg();
+        $_SESSION['error'] = "Error en decodificar el JSON: " . json_last_error_msg();
     }
 } else {
-    $_SESSION['error'] = "El archivo JSON no existe.";
+    $_SESSION['error'] = "L'arxiu JSON no existeix.";
 }
 
 ?>
@@ -48,39 +48,39 @@ if (file_exists($jsonFile)) {
 
 
     <?php
-    // Cargar el archivo JSON
+    // Carregar l'arxiu JSON
     $jsonFile = 'basecanc.json';
 
     if (file_exists($jsonFile)) {
-        // Leer el contenido del archivo JSON
+        // Llegir el contingut de l'arxiu JSON
         $jsonData = file_get_contents($jsonFile);
         if ($jsonData === false) {
-            // Mostrar un error si no se puede leer el archivo
-            echo "<li>Error: No se pudo leer el archivo JSON.</li>";
+            // Mostrar un error si no es pot llegir l'arxiu
+            echo "<li>Error: No es pot llegir l'arxiu JSON.</li>";
         } else {
-            // Decodificar el JSON a un array asociativo
+            // Decodificar el JSON a un array associatiu
             $songs = json_decode($jsonData, true);
             if ($songs === null) {
-                // Mostrar un error si el JSON está mal formateado
-                echo "<li>Error: El archivo JSON está mal formado.</li>";
+                // Mostrar un error si el JSON està mal formatat
+                echo "<li>Error: L'arxiu JSON està mal formatat.</li>";
             }
         }
     } else {
-        // Mostrar un mensaje si el archivo no existe
-        echo "<li>Error: El archivo JSON no existe.</li>";
+        // Mostrar un missatge si l'arxiu no existeix
+        echo "<li>Error: L'arxiu JSON no existeix.</li>";
         $songs = [];
     }
 
-    // Mostrar canciones desde el archivo JSON
+    // Mostrar cançons des de l'arxiu JSON
     if (empty($songs)): ?>
         <li>No hi ha cançons disponibles.</li>
         <?php else:
-        // Inicializar el contador
+        // Inicialitzar el comptador
         $count = 1;
 
         foreach ($songs as $index => $song):
-            // Asegurarse de que cada campo esté presente
-            $title = isset($song['title']) ? htmlspecialchars($song['title']) : 'Título no disponible';
+            // Assegurar-se que cada camp està present
+            $title = isset($song['title']) ? htmlspecialchars($song['title']) : 'Títol no disponible';
             $artist = isset($song['artist']) ? htmlspecialchars($song['artist']) : 'Artista no disponible';
             $cover = isset($song['cover']) ? htmlspecialchars($song['cover']) : '';
             $id = isset($song['id']) ? htmlspecialchars($song['id']) : '';
@@ -93,7 +93,7 @@ if (file_exists($jsonFile)) {
 
                     <div class="llimatge">
                     <?php if ($cover): ?>
-                        <img src="<?= $cover ?>" alt="Carátula" class="img-llista">
+                        <img src="<?= $cover ?>" alt="Caràtula" class="img-llista">
                     <?php else: ?>
                         No disponible
                     <?php endif; ?>
@@ -102,18 +102,18 @@ if (file_exists($jsonFile)) {
 
                     <div class="botonsllista">
 
-                        <!-- Formulario para jugar -->
+                        <!-- Formulari per jugar -->
                         <form action="joc.php?id=<?= urlencode($id) ?>" method="post">
                             <button class='bllista' type="submit">Jugar</button>
                         </form>
 
-                        <!-- Formulario para editar la canción -->
+                        <!-- Formulari per editar la cançó -->
                         <form action="editcan.php?title=<?= urlencode($title) ?>&artist=<?= urlencode($artist) ?>" method="post">
                             <input type="hidden" name="song_index" value="<?= $index ?>">
                             <button class='bllista' type="submit">Editar</button>
                         </form>
 
-                        <!-- Formulario para eliminar la canción -->
+                        <!-- Formulari per eliminar la cançó -->
                         <form action="eliminarcanco.php" method="post">
                             <input type="hidden" name="song_index" value="<?= $index ?>">
                             <button class='bllista' type="submit">Eliminar Cançó</button>
@@ -128,7 +128,7 @@ if (file_exists($jsonFile)) {
         <?php endforeach; ?>
     <?php endif; ?>
 
-    <!-- Mostrar mensajes de éxito -->
+    <!-- Mostrar missatges d'èxit -->
     <?php if (isset($_SESSION['success'])): ?>
         <?php if (is_array($_SESSION['success'])): ?>
             <?php foreach ($_SESSION['success'] as $message): ?>
@@ -137,14 +137,14 @@ if (file_exists($jsonFile)) {
         <?php else: ?>
             <li><?= $_SESSION['success'] ?></li>
         <?php endif; ?>
-        <?php unset($_SESSION['success']); // Limpiar mensajes después de mostrarlos 
+        <?php unset($_SESSION['success']); // Netejar missatges després de mostrar-los 
         ?>
     <?php endif; ?>
 
-    <!-- Mostrar mensajes de error -->
+    <!-- Mostrar missatges d'error -->
     <?php if (isset($_SESSION['error'])): ?>
         <li style="color:red;"><?= $_SESSION['error'] ?></li>
-        <?php unset($_SESSION['error']); // Limpiar mensaje de error después de mostrarlo 
+        <?php unset($_SESSION['error']); // Netejar missatge d'error després de mostrar-lo 
         ?>
     <?php endif; ?>
     </div>

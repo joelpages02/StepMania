@@ -3,52 +3,54 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Defineix l'ample de la vista i l'escala inicial per a dispositius mòbils -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Títol de la pàgina -->
     <title>StepMania</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Enllaç a l'arxiu d'estils CSS -->
+    <link rel="stylesheet" href="/StepMania/estils/style.css">
 </head>
 
 <body>
 
-
+    <!-- Reproductor d'àudio amb controls i reproducció en bucle -->
     <audio id="audio" loop controls>
+        <!-- Font d'àudio en format MP3 -->
         <source src="audio/musica_inicio.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- Controls personalitzats per a l'àudio -->
     <div class="audio-controls">
+        <!-- Botó per reproduir l'àudio -->
         <button onclick="document.getElementById('audio').play()"><span class="gravity-ui--play-fill"></span></button>
+        <!-- Botó per pausar l'àudio -->
         <button onclick="document.getElementById('audio').pause()"><span class="iconamoon--player-pause-fill"></span></button>
+        <!-- Reproductor d'àudio sense controls visibles -->
         <audio id="audio" loop>
+            <!-- Font d'àudio en format MP3 -->
             <source src="audio/musica_inicio.mp3" type="audio/mpeg">
         </audio>
     </div>
 
+    <!-- Capçalera de la pàgina -->
     <header class="header">
+        <!-- Títol principal de la pàgina -->
         <h1 class="titol">StepMania</h1>
     </header>
 
+    <!-- Barra de navegació amb informació de la versió -->
     <nav class="nav">
+        <!-- Text de la versió -->
         <a>Versió: StepMania 0.0.1</a>
     </nav>
 
-    <!--
-    <div class="div">
-        <aside class="aside">
-            <ul>
-                <li>Llistat Cançons (max4)</li>
-                <li>...</li>
-                <li>...</li>
-                <li>...</li>
-                <li>...</li>
-            </ul>
-        </aside>
-        -->
-
-    </div>
-
+    <!-- Menú principal amb botons per a les diferents seccions -->
     <div class="menu">
+        <!-- Botó per començar a jugar -->
         <button class="bmenu" onclick="window.location.href='llistacanc.php'">Jugar</button>
-        <button class="bmenu" onclick="window.location.href='formacanco.html'">Afefir Cançó</a></button>
+        <!-- Botó per afegir una nova cançó -->
+        <button class="bmenu" onclick="window.location.href='formacanco.html'">Afefir Cançó</button>
+        <!-- Botó per veure la classificació -->
         <button class="bmenu" onclick="window.location.href='classificacio.html'">Classificació</button>
     </div>
 </body>

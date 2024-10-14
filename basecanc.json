@@ -1,1 +1,10 @@
-[{"id":1,"title":"Thunder y Lightning","artist":"Bad Bunny, Eladio Carrion","music":"musica_1.mp3","cover":"uploads\/covers\/imatge_1.jpg","description":""}]
+[
+    {
+        "id": 1,
+        "title": "Thunder y Lightning",
+        "artist": "Bad Bunny, Eladio Carrion",
+        "music": "musica_1.mp3",
+        "cover": "uploads\/covers\/imatge_1.jpg",
+        "description": ""
+    }
+]

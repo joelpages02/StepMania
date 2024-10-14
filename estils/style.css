@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
 
-
+/* Importar la font Irish Grover de Google Fonts */
 * {
     font-family: 'Irish grover';
 }
 
+/* Aplicar la font a tots els elements */
 body {
     overflow: hidden;
     background-image: url("img/fondo1.gif");
@@ -17,6 +18,7 @@ body {
     margin: 0;
 }
 
+/* Estil del fons del cos i propietats generals */
 .bg-video {
     position: fixed;
     top: 0;
@@ -27,7 +29,7 @@ body {
     z-index: -1;
 }
 
-
+/* Estil del vídeo de fons */
 .content {
     position: relative;
     z-index: 10;
@@ -39,16 +41,19 @@ body {
     padding: 20px;
 }
 
+/* Estil del contenidor principal */
 header {
     display: flex;
     justify-content: center;
 }
 
+/* Estil del capçal */
 .titol {
     font-size: 50px;
     border-radius: 15%;
 }
 
+/* Estil del títol */
 .titol {
     box-sizing: border-box;
     padding: 10px;
@@ -61,38 +66,43 @@ header {
     transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 }
 
+/* Estil del títol amb efecte d'ombra i transició */
 .titol:hover {
     text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px palevioletred, 0 0 70px palevioletred, 0 0 80px palevioletred, 0 0 100px palevioletred;
 }
 
+/* Estil del títol en passar el cursor */
 nav {
     display: flex;
     justify-content: flex-end;
     margin: 1.5em;
-
 }
 
+/* Estil de la barra de navegació */
 nav a {
     color: pink;
     font-size: 75%;
     margin-right: 2em;
 }
 
+/* Estil dels enllaços de la barra de navegació */
 nav a:last-child {
     margin-right: 0;
 }
 
+/* Estil de l'últim enllaç de la barra de navegació */
 .audio-controls {
     display: flex;
     align-items: center;
     margin: 20px 0;
-
 }
 
+/* Estil dels controls d'àudio */
 audio {
     display: none;
 }
 
+/* Amagar l'element d'àudio */
 .audio-controls button {
     background-color: transparent;
     border: none;
@@ -105,15 +115,18 @@ audio {
     transition: background-color 0.3s;
 }
 
+/* Estil dels botons dels controls d'àudio */
 .audio-controls button:hover {
     background-color: palevioletred;
 }
 
+/* Estil dels botons dels controls d'àudio en passar el cursor */
 #musica {
     width: 1.5em;
     height: 1.5em;
 }
 
+/* Estil de l'icona de música */
 aside {
     width: 20%;
     display: flex;
@@ -121,6 +134,7 @@ aside {
     justify-items: flex-start;
 }
 
+/* Estil del panell lateral */
 aside li {
     color: pink;
     display: flex;
@@ -129,6 +143,7 @@ aside li {
     text-decoration: none;
 }
 
+/* Estil dels elements de la llista del panell lateral */
 .menu {
     display: flex;
     flex-direction: column;
@@ -138,6 +153,7 @@ aside li {
     padding: 20px;
 }
 
+/* Estil del menú */
 .bmenu {
     display: flex;
     justify-content: center;
@@ -155,11 +171,13 @@ aside li {
     transition: transform 0.2s;
 }
 
+/* Estil dels botons del menú */
 .bmenu:hover {
     background-color: palevioletred;
     transform: scale(1.05);
 }
 
+/* Estil dels botons del menú en passar el cursor */
 footer {
     /*position: fixed;*/
     margin-top: 10em;
@@ -170,6 +188,7 @@ footer {
     padding: 0.5em 0;
 }
 
+/* Estil del peu de pàgina */
 footer h3 {
     color: pink;
     margin: 0;
@@ -177,6 +196,7 @@ footer h3 {
 
 /* Estils formulari afegir cançó i editar */
 
+/* Estil de la capçalera secundària */
 .header2 {
     color: pink;
     display: flex;
@@ -184,12 +204,14 @@ footer h3 {
     padding: 10px;
 }
 
+/* Estil de la barra de navegació secundària */
 .nav2 {
     display: flex;
     justify-content: flex-start;
     padding: 10px;
 }
 
+/* Estil de l'etiqueta personalitzada per a la càrrega de fitxers */
 .custom-file-label {
     display: inline-block;
     padding: 10px 20px;
@@ -204,99 +226,82 @@ footer h3 {
     width: 180px;
 }
 
+/* Estil de l'etiqueta personalitzada per a la càrrega de fitxers en passar el cursor */
 .custom-file-label:hover {
     background-color: #f68585;
 }
 
+/* Estil del contenidor per afegir cançons */
 .afegircan {
     max-height: 575px;
     background-color: rgba(0, 0, 0, 0.6);
-    /* Transparencia ajustada para un mejor contraste */
     width: 90%;
-    /* Ancho reducido al 90% del contenedor principal */
     max-width: 60em;
-    /* Límite máximo para pantallas grandes */
     height: auto;
-    /* Ajuste de la altura dinámica */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
     padding: 1em;
-    /* Espaciado adicional interno */
     border: 0.2em solid pink;
-    /* Bordes más definidos */
     border-radius: 1em;
     box-shadow: 0 0 10px 3px #FF1493;
-    /* Sombra para dar efecto neón */
 }
 
+/* Amagar l'input de tipus file */
 .file-input {
     display: none;
 }
 
+/* Estil de la llista dins del contenidor per afegir cançons */
 .afegircan ul {
     padding: 0;
     width: 100%;
     max-width: 40em;
-    /* Limitar el ancho del formulario */
 }
 
+/* Estil dels elements de la llista dins del contenidor per afegir cançons */
 .afegircan li {
     display: flex;
     align-items: flex-start;
-    /* Alinear a la izquierda para mejor lectura */
     flex-direction: column;
-    /* Los elementos uno debajo del otro */
     color: pink;
     text-align: left;
-    /* Alineación del texto a la izquierda */
     margin-bottom: 1.5em;
-    /* Espacio entre campos */
     list-style: none;
 }
 
-/* Estilo general del placeholder */
+/* Estil general del placeholder en els inputs i textareas dins del contenidor per afegir cançons */
 .afegircan input::placeholder,
 .afegircan textarea::placeholder {
     color: rgba(255, 182, 193, 0.7);
-    /* Color rosa claro translúcido */
     font-style: italic;
-    /* Opción: puedes usar cursiva para distinguirlo del texto normal */
 }
 
+/* Estil dels inputs de tipus text, file i textareas dins del contenidor per afegir cançons */
 .afegircan input[type="text"],
 .afegircan input[type="file"],
 .afegircan textarea {
     width: 100%;
-    /* Hacer que los inputs ocupen todo el ancho disponible */
     padding: 0.5em;
-    /* Espaciado interno */
     border: 0.1em solid pink;
-    /* Bordes rosas para seguir con el tema */
     background-color: rgba(255, 255, 255, 0.1);
-    /* Fondo translúcido para inputs */
     color: pink;
-    /* Texto blanco */
     border-radius: 0.5em;
-    /* Bordes redondeados */
     box-shadow: 0 0 5px pink;
-    /* Sombra interna de los inputs */
 }
 
+/* Estil de la textarea dins del contenidor per afegir cançons per evitar l'ajust de mida manual */
 .afegircan textarea {
     resize: none;
-    /* Eliminar el ajuste de tamaño manual */
 }
 
+/* Estil del botó de tipus submit dins del contenidor per afegir cançons */
 .afegircan input[type="submit"] {
     width: 100%;
-    /* Botón ocupa todo el ancho disponible */
     max-width: 20em;
-    /* Limitar ancho máximo del botón */
     padding: 0.8em 0;
-    /* Ajustar el espaciado para mantenerlo dentro del contenedor */
     background-color: #FF1493;
     color: white;
     border: none;
@@ -305,17 +310,15 @@ footer h3 {
     box-shadow: 0 0 7px 2px pink;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    /* Centrar el texto del botón */
 }
 
+/* Estil del botó de tipus submit dins del contenidor per afegir cançons en passar el cursor */
 .afegircan input[type="submit"]:hover {
     background-color: #FF69B4;
     box-shadow: 0 0 15px 5px #FF69B4;
 }
 
-
-/* Estils classificació */
-
+/* Estils de la llista de classificació */
 .llistaclassif {
     background-color: #0000008c;
     display: flex;
@@ -329,26 +332,27 @@ footer h3 {
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
+/* Estil dels elements de la llista de classificació */
 .llistaclassif li {
     list-style: decimal;
     margin: 0.4em;
     color: pink;
 }
 
+
 /* Estils Llista cançons */
 
-/* Estilos generales para el cuerpo */
+/* Estils generals per al cos quan es mostra la llista de cançons */
 body.llista-cancions {
     overflow-y: auto;
     overflow-x: hidden;
     background-color: #1e1e2f;
     color: pink;
     margin: 0;
-    /* Elimina el margen */
     padding: 0;
-    /* Elimina el padding */
 }
 
+/* Estil del contenidor de la llista de cançons */
 .llistac {
     width: 80%;
     max-width: 1000px;
@@ -361,6 +365,7 @@ body.llista-cancions {
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
+/* Estil dels elements de la llista de cançons */
 .llcancons{
     display: flex;
     padding: 0;
@@ -371,15 +376,18 @@ body.llista-cancions {
     font-size: 40px;
 }
 
+/* Estil de la llista dins del contenidor de cançons */
 .llistac ul{
     padding: 0;
 }
 
+/* Estil dels elements de la llista dins del contenidor de cançons */
 .llcancons li {
     display: flex;
     text-decoration: none;
 }
 
+/* Estil de la imatge de la llista de cançons */
 .img-llista{
     display: flex;
     align-items: center;
@@ -388,15 +396,18 @@ body.llista-cancions {
     width: 10%;
     border: solid pink 5px;
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
-
 }
+
+/* Estil per als elements de la llista amb estil de color vermell */
 .llistac li[style*="color:red"] {
     font-weight: bold;
 }
 
+/* Estil per als missatges d'èxit dins de la llista de cançons */
 .llistac li.success-message {
     color: green;
 }
+
 
 .gravity-ui--play-fill {
     position: absolute;
@@ -463,12 +474,14 @@ body.llista-cancions {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='%23ffc0cb' fill-rule='evenodd' d='M5.183.25a1.5 1.5 0 0 1 1.492 1.14l.215.86h5.61a1.5 1.5 0 0 1 1.5 1.5v8.5a1.5 1.5 0 0 1-1.5 1.5h-11a1.5 1.5 0 0 1-1.5-1.5V1.75A1.5 1.5 0 0 1 1.5.25zM9.48 4.48a1 1 0 0 0-.438.015l-.005.002l-3.472.963a.97.97 0 0 0-.712.927V8.75a1.535 1.535 0 1 0 1.501 1.535V6.991l2.407-.669v1.303h-.034A1.536 1.536 0 1 0 10.26 9.11l-.001-3.683v-.004a.966.966 0 0 0-.78-.943Z' clip-rule='evenodd'/%3E%3C/svg%3E");
 }
 
+/* Estil dels botons de la llista */
 .botonsllista {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly
 }
 
+/* Estil dels botons individuals de la llista */
 .bllista {
     color: pink;
     border: solid pink 2px;
@@ -481,10 +494,12 @@ body.llista-cancions {
     font-size: 20px;
 }
 
+/* Estil dels botons de la llista en passar el cursor */
 .bllista:hover {
     background-color: #f68585;
 }
 
+/* Estil del contenidor de joc */
 .jugar {
     display: flex;
     width: 98vw;
@@ -496,6 +511,7 @@ body.llista-cancions {
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
+/* Estil del contenidor de l'element sonant */
 .sonant{
     display: flex;
     justify-content: center;
@@ -506,11 +522,13 @@ body.llista-cancions {
     align-items: center;
 }
 
+/* Estil dels enllaços dins del contenidor sonant */
 .csonant a{
     color: pink;
     margin: 1%;
 }
 
+/* Estil del contenidor de l'element sonant */
 .csonant{
     display: flex;
     justify-content: center;
@@ -521,6 +539,7 @@ body.llista-cancions {
     align-items: flex-start;
 }
 
+/* Estil de la imatge de l'element sonant */
 .imgsonant{
     display: flex;
     margin: 1%;
@@ -530,6 +549,7 @@ body.llista-cancions {
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
+/* Estil del contenidor del joc */
 .pjoc{
     display: flex;
     justify-content: center;
@@ -537,21 +557,22 @@ body.llista-cancions {
     width: 33.33%;
 }
 
+/* Estil dels enllaços de les fletxes */
 .fletxes a {
-    display: inline-block; /* O flex si necesitas alineación adicional */
-    width: 100px; /* Tamaño del cuadrado */
-    height: 100px; /* Tamaño del cuadrado */
-    line-height: 50px; /* Centra verticalmente el contenido */
-    text-align: center; /* Centra horizontalmente el contenido */
-    margin: 5px; /* Espacio entre los cuadrados */
-    text-decoration: none; /* Opcional: elimina el subrayado del enlace */
-    color: transparent; /* Hace el punto invisible, pero mantiene el espacio */
-    border: 1px solid pink; /* Opcional: agrega un borde para visualizar los cuadrados */
-    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho y alto */
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    line-height: 50px;
+    text-align: center;
+    margin: 5px;
+    text-decoration: none;
+    color: transparent;
+    border: 1px solid pink;
+    box-sizing: border-box;
     box-shadow: 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493, 0 0 7px 1px #FF1493;
 }
 
-
+/* Estil del contenidor de les fletxes */
 .fletxes{
     align-items: center;
     justify-content: space-evenly;
@@ -559,8 +580,7 @@ body.llista-cancions {
     color: pink;
 }
 
-
-
+/* Estil del contenidor dels punts */
 .punts{
     display: flex;
     justify-content: center;
@@ -569,11 +589,13 @@ body.llista-cancions {
     width: 33.33%;
 }
 
+/* Estil dels enllaços dels punts */
 .punts a{
     color: pink;
     margin: 1%;
 }
 
+/* Estil de la imatge de la fletxa */
 .imgfletxa{
     margin: 0;
     padding: 22px;

@@ -1,20 +1,22 @@
 <?php
+// Inicia la sessió
 session_start();
 
+// Defineix la ubicació del fitxer JSON amb les dades de les cançons
 $jsonFile = 'basecanc.json';
 $songs = [];
 
-// Cargar el archivo JSON si existe
+// Carrega el fitxer JSON si existeix
 if (file_exists($jsonFile)) {
     $songs = json_decode(file_get_contents($jsonFile), true);
 }
 
-// Directorios para subir archivos
+// Directoris per pujar arxius
 $musicDir = 'uploads/music/';
 $coversDir = 'uploads/covers/';
 $gameDir = 'uploads/games/';
 
-// Crear directorios si no existen
+// Crea els directoris si no existeixen
 if (!is_dir($musicDir)) {
     mkdir($musicDir, 0755, true);
 }
@@ -25,12 +27,12 @@ if (!is_dir($gameDir)) {
     mkdir($gameDir, 0755, true);
 }
 
-// Procesar el formulario
-$title = $_POST['titol'] ?? 'Título no disponible';
+// Processa el formulari
+$title = $_POST['titol'] ?? 'Títol no disponible';
 $artist = $_POST['artista'] ?? 'Artista no disponible';
-$description = $_POST['descripcio'] ?? 'Descripción no disponible';
+$description = $_POST['descripcio'] ?? 'Descripció no disponible';
 
-// Procesar la subida de archivos de música
+// Processa la pujada d'arxius de música
 if (isset($_FILES['fmusic'])) {
     $fileMusic = $_FILES['fmusic'];
     $fileMusicName = $fileMusic['name'];
@@ -39,27 +41,27 @@ if (isset($_FILES['fmusic'])) {
     $fileMusicExt = strtolower(pathinfo($fileMusicName, PATHINFO_EXTENSION));
     $allowedMusic = ['mp3', 'wav'];
 
-     // Obtener el próximo número de música
-     if (!empty($songs)) {
+    // Obté el següent número de música
+    if (!empty($songs)) {
         $lastSong = end($songs);
-        $count = $lastSong['id'] + 1; // Incrementa el ID basado en la última canción
+        $count = $lastSong['id'] + 1; // Incrementa l'ID basat en l'última cançó
     } else {
-        $count = 1; // Si no hay canciones, comienza desde 1
+        $count = 1; // Si no hi ha cançons, comença des de 1
     }
 
     $newMusicName = "musica_$count".".$fileMusicExt";
     $musicDestination = $musicDir . $newMusicName;
 
     if (move_uploaded_file($fileMusicTmpName, $musicDestination)) {
-        // Se ha subido correctamente
+        // S'ha pujat correctament
     } else {
-        $_SESSION['error'] = "Error al mover el archivo de música.";
+        $_SESSION['error'] = "Error al moure l'arxiu de música.";
         header('Location: llistacanc.php');
         exit();
     }
 }
 
-// Procesar la subida de la carátula
+// Processa la pujada de la caràtula
 if (isset($_FILES['fcarat'])) {
     $fileCover = $_FILES['fcarat'];
     $fileCoverName = $fileCover['name'];
@@ -69,7 +71,7 @@ if (isset($_FILES['fcarat'])) {
     $allowedCover = ['jpg', 'jpeg', 'png', 'gif'];
 
     if (!in_array($fileCoverExt, $allowedCover)) {
-        $_SESSION['error'] = "Solo se permiten archivos de carátula en formato JPG, JPEG, PNG o GIF.";
+        $_SESSION['error'] = "Només es permeten arxius de caràtula en format JPG, JPEG, PNG o GIF.";
         header('Location: llistacanc.php');
         exit();
     }
@@ -78,7 +80,7 @@ if (isset($_FILES['fcarat'])) {
     $coverDestination = $coversDir . $newCoverName;
 
     if (!move_uploaded_file($fileCoverTmpName, $coverDestination)) {
-        $_SESSION['error'] = "Error al mover el archivo de carátula.";
+        $_SESSION['error'] = "Error al moure l'arxiu de caràtula.";
         header('Location: llistacanc.php');
         exit();
     }
@@ -91,7 +93,7 @@ if (!empty($songs)) {
     $count = 1;
 }
 
-// Almacenar los datos de la canción
+// Emmagatzema les dades de la cançó
 $songs[] = [
     'id' => $count,
     'title' => $title,
@@ -101,9 +103,10 @@ $songs[] = [
     'description' => $description
 ];
 
-// Guardar los datos en el archivo JSON
+// Guarda les dades en el fitxer JSON
 file_put_contents($jsonFile, json_encode($songs));
 
-// Redirigir a la lista
+// Redirigeix a la llista
 header('Location: llistacanc.php');
 exit();
+?>
