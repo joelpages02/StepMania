@@ -177,23 +177,6 @@ aside li {
     transform: scale(1.05);
 }
 
-/* Estil dels botons del menú en passar el cursor */
-footer {
-    /*position: fixed;*/
-    margin-top: 10em;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 0.5em 0;
-}
-
-/* Estil del peu de pàgina */
-footer h3 {
-    color: pink;
-    margin: 0;
-}
-
 /* Estils formulari afegir cançó i editar */
 
 /* Estil de la capçalera secundària */

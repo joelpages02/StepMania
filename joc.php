@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StepMania</title>
-    <link rel="stylesheet" href="/StepMania/estils/style.css">
+    <link rel="stylesheet" href="/estils/style.css">
 </head>
 
 <body>
