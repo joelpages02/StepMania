@@ -1,96 +1,97 @@
-// joc_moviment.js
-
-// Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
-    // Obtener todas las flechas
     const arrows = document.querySelectorAll('.fletxes .imgfletxa');
-
-    // Elemento para mostrar los puntos
     const pointsDisplay = document.querySelector('.punts a');
-
-    // Variables de puntuación
+    const progressBar = document.getElementById('file');
+    const audio = document.getElementById('audio'); // Obtener el elemento de audio directamente
     let score = 0;
+    const music = "<?php echo $music; ?>";
+    const songTitle = "<?php echo $title; ?>";
 
-    // Elemento de audio
-    const audio = new Audio('musica_2.mp3'); // Asegúrate de que la ruta sea correcta según tu estructura de archivos
-
-    // Variable para guardar la flecha que se está mostrando actualmente
     let currentArrowIndex = -1;
+    let gameEnded = false;
 
-    // Función para mostrar una flecha aleatoria y ocultar las demás
     const showRandomArrow = () => {
-        // Ocultar todas las flechas
+        if (gameEnded) return;
+
         arrows.forEach((arrow) => {
-            arrow.style.display = 'none'; // Oculta todas las flechas
+            arrow.style.display = 'none';
         });
 
-        // Generar un índice aleatorio entre 0 y el número de flechas
         currentArrowIndex = Math.floor(Math.random() * arrows.length);
-
-        // Mostrar solo la flecha aleatoria
         arrows[currentArrowIndex].style.display = 'block';
 
-        // Establecer el tiempo para mostrar la próxima flecha
-        const displayDuration = 1000; // Duración de cada flecha en milisegundos
-
-        // Mostrar la próxima flecha después de un tiempo definido
-        setTimeout(showRandomArrow, displayDuration);
+        setTimeout(showRandomArrow, 1000);
     };
 
-    // Función para manejar el puntaje al presionar una tecla
     const handleKeyPress = (event) => {
-        // Obtener el código de la tecla presionada
+        if (gameEnded) return;
+
         switch (event.key) {
             case 'ArrowLeft':
-                // La flecha izquierda
                 if (currentArrowIndex === 0) {
-                    score += 100; // Sumar 100 puntos
-                    pointsDisplay.textContent = `Punts: ${score}`; // Actualizar la visualización de puntos
-                    arrows[currentArrowIndex].style.display = 'none'; // Ocultar la flecha correcta
+                    score += 100;
+                } else {
+                    score -= 50;
                 }
                 break;
             case 'ArrowUp':
-                // La flecha arriba
                 if (currentArrowIndex === 1) {
-                    score += 100; // Sumar 100 puntos
-                    pointsDisplay.textContent = `Punts: ${score}`; // Actualizar la visualización de puntos
-                    arrows[currentArrowIndex].style.display = 'none'; // Ocultar la flecha correcta
+                    score += 100;
+                } else {
+                    score -= 50;
                 }
+                
                 break;
             case 'ArrowDown':
-                // La flecha abajo
                 if (currentArrowIndex === 2) {
-                    score += 100; // Sumar 100 puntos
-                    pointsDisplay.textContent = `Punts: ${score}`; // Actualizar la visualización de puntos
-                    arrows[currentArrowIndex].style.display = 'none'; // Ocultar la flecha correcta
+                    score += 100;
+                } else {
+                    score -= 50;
                 }
                 break;
             case 'ArrowRight':
-                // La flecha derecha
                 if (currentArrowIndex === 3) {
-                    score += 100; // Sumar 100 puntos
-                    pointsDisplay.textContent = `Punts: ${score}`; // Actualizar la visualización de puntos
-                    arrows[currentArrowIndex].style.display = 'none'; // Ocultar la flecha correcta
+                    score += 100;
+                } else {
+                    score -= 50;
                 }
                 break;
             default:
                 break;
         }
+        pointsDisplay.textContent = `Punts: ${score}`;
+        arrows[currentArrowIndex].style.display = 'none';
     };
 
-    // Reproducir la canción
-    audio.play();
+    const endGame = () => {
+        gameEnded = true; // Cambiar el estado del juego a terminado
+        audio.pause(); // Asegúrate de pausar el audio
+        audio.currentTime = 0; // Reiniciar el tiempo de reproducción
+        arrows.forEach((arrow) => {
+            arrow.style.display = 'none'; // Ocultar todas las flechas
+        });;
+        alert(`El joc ha finalizat!`);
+    };
 
-    // Iniciar mostrando una flecha aleatoria
     showRandomArrow();
-
-    // Agregar un event listener para detectar la presión de teclas
     document.addEventListener('keydown', handleKeyPress);
 
-     // Detener la aparición de flechas al finalizar la canción
-     audio.addEventListener('ended', () => {
-        arrows.forEach((arrow) => {
-            arrow.style.display = 'none'; // Asegúrate de ocultar las flechas al final
-        });
-    });
+    audio.addEventListener('ended', endGame); // Termina el juego cuando el audio termina
+
+    // Actualización del progreso
+    const updateProgress = () => {
+        if (audio.duration) {
+            const percentage = (audio.currentTime / audio.duration) * 100;
+            progressBar.value = percentage;
+
+            // Si la barra de progreso llega al 100%, también termina el juego
+            if (percentage >= 100) {
+                endGame();
+            }
+        }
+        requestAnimationFrame(updateProgress);
+    };
+
+    audio.play(); // Reproducir la música
+    updateProgress(); // Iniciar la actualización del progreso
 });

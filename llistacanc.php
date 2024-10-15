@@ -34,7 +34,7 @@ if (file_exists($jsonFile)) {
 </head>
 
 <body class="llista-cancions">
-  
+
 
     <nav class="nav2">
         <a href="index.html">
@@ -84,6 +84,7 @@ if (file_exists($jsonFile)) {
             $artist = isset($song['artist']) ? htmlspecialchars($song['artist']) : 'Artista no disponible';
             $cover = isset($song['cover']) ? htmlspecialchars($song['cover']) : '';
             $id = isset($song['id']) ? htmlspecialchars($song['id']) : '';
+            $music = isset($song['music']) ? htmlspecialchars($song['music']) : '';
         ?>
             <div class="llistac">
                 <div class="llcancons">
@@ -91,35 +92,36 @@ if (file_exists($jsonFile)) {
                     Artista: <?= $artist ?>
                 </div>
 
-                    <div class="llimatge">
+                <div class="llimatge">
                     <?php if ($cover): ?>
                         <img src="<?= $cover ?>" alt="Caràtula" class="img-llista">
                     <?php else: ?>
                         No disponible
                     <?php endif; ?>
-                    </div>
-
-
-                    <div class="botonsllista">
-
-                        <!-- Formulari per jugar -->
-                        <form action="joc.php?id=<?= urlencode($id) ?>" method="post">
-                            <button class='bllista' type="submit">Jugar</button>
-                        </form>
-
-                        <!-- Formulari per editar la cançó -->
-                        <form action="editcan.php?title=<?= urlencode($title) ?>&artist=<?= urlencode($artist) ?>" method="post">
-                            <input type="hidden" name="song_index" value="<?= $index ?>">
-                            <button class='bllista' type="submit">Editar</button>
-                        </form>
-
-                        <!-- Formulari per eliminar la cançó -->
-                        <form action="eliminarcanco.php" method="post">
-                            <input type="hidden" name="song_index" value="<?= $index ?>">
-                            <button class='bllista' type="submit">Eliminar Cançó</button>
-                        </form>
-                    </div>
                 </div>
+
+
+                <div class="botonsllista">
+
+                    <!-- Formulari per jugar -->
+                    <form action="joc.php?id=<?= urlencode($id) ?>" method="post">
+                        <input type="hidden" name="music" value="<?= $music ?>">
+                        <button class='bllista' type="submit">Jugar</button>
+                    </form>
+
+                    <!-- Formulari per editar la cançó -->
+                    <form action="editcan.php?title=<?= urlencode($title) ?>&artist=<?= urlencode($artist) ?>" method="post">
+                        <input type="hidden" name="song_index" value="<?= $index ?>">
+                        <button class='bllista' type="submit">Editar</button>
+                    </form>
+
+                    <!-- Formulari per eliminar la cançó -->
+                    <form action="eliminarcanco.php" method="post">
+                        <input type="hidden" name="song_index" value="<?= $index ?>">
+                        <button class='bllista' type="submit">Eliminar Cançó</button>
+                    </form>
+                </div>
+            </div>
             </div>
 
 

@@ -53,7 +53,7 @@ if (isset($_FILES['fmusic'])) {
         $count = 1; // Si no hi ha cançons, comença des de 1
     }
 
-    $newMusicName = "musica_$count".".$fileMusicExt";
+    $newMusicName = "musica_$count.$fileMusicExt";  // Asegúrate de que el nombre de archivo sea correcto
     $musicDestination = $musicDir . $newMusicName;
 
     if (move_uploaded_file($fileMusicTmpName, $musicDestination)) {
@@ -80,7 +80,7 @@ if (isset($_FILES['fcarat'])) {
         exit();
     }
 
-    $newCoverName = "imatge_$count".".$fileCoverExt";
+    $newCoverName = "imatge_$count.$fileCoverExt";  // Asegúrate de que el nombre de archivo sea correcto
     $coverDestination = $coversDir . $newCoverName;
 
     if (!move_uploaded_file($fileCoverTmpName, $coverDestination)) {
@@ -90,19 +90,12 @@ if (isset($_FILES['fcarat'])) {
     }
 }
 
-if (!empty($songs)) {
-    $lastsong = end($songs);
-    $count = $lastsong['id'] + 1;
-} else {
-    $count = 1;
-}
-
 // Emmagatzema les dades de la cançó
 $songs[] = [
     'id' => $count,
     'title' => $title,
     'artist' => $artist,
-    'music' => $newMusicName,
+    'music' => $newMusicName,  // Almacena el nombre del archivo de música
     'cover' => $coverDestination ?? null,
     'description' => $description,
     'timingData' => $timingData
