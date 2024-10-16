@@ -20,8 +20,8 @@
     <form action="afegircanco.php" method="post" enctype="multipart/form-data" id="songForm">
         <div class="afegircan">
             <ul>
-                <li><input type="text" name="titol" placeholder="Títol de la cançó"><br></li>
-                <li><input type="text" name="artista" placeholder="Artista"><br></li>
+                <li><input type="text" name="titol" placeholder="Títol de la cançó" required><br></li>
+                <li><input type="text" name="artista" placeholder="Artista" required><br></li>
                 <li>
                     <div class="file-upload">
                         <label for="fmusic" class="custom-file-label">Select music</label>
@@ -37,7 +37,7 @@
                 <li>
                     <div class="file-upload">
                         <label for="fjoc" class="custom-file-label">Select TXT</label>
-                        <input type="file" id="fjoc" name="fjoc" accept=".txt" class="file-input">
+                        <input type="file" id="fjoc" name="fjoc" accept=".txt" class="file-input" required>
                     </div>
                 </li>
                 <!-- Camp ocult per emmagatzemar el contingut del TXT -->

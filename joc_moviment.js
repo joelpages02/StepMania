@@ -1,15 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar totes les fletxes i el display de punts
     const arrows = document.querySelectorAll('.fletxes .imgfletxa');
     const pointsDisplay = document.querySelector('.punts a');
     const progressBar = document.getElementById('file');
-    const audio = document.getElementById('audio'); // Obtener el elemento de audio directamente
+    // Obtenir l'element d'àudio directament
+    const audio = document.getElementById('audio');
     let score = 0;
+    // Variables per a la música i el títol de la cançó
     const music = "<?php echo $music; ?>";
     const songTitle = "<?php echo $title; ?>";
 
     let currentArrowIndex = -1;
     let gameEnded = false;
 
+    // Funció per mostrar una fletxa aleatòria
     const showRandomArrow = () => {
         if (gameEnded) return;
 
@@ -23,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(showRandomArrow, 1000);
     };
 
+    // Funció per gestionar la pressió de les tecles
     const handleKeyPress = (event) => {
         if (gameEnded) return;
 
@@ -59,39 +64,50 @@ document.addEventListener('DOMContentLoaded', () => {
             default:
                 break;
         }
+        // Actualitzar el text del display de punts
         pointsDisplay.textContent = `Punts: ${score}`;
+        // Amagar la fletxa actual
         arrows[currentArrowIndex].style.display = 'none';
     };
 
+    // Funció per finalitzar el joc
     const endGame = () => {
-        gameEnded = true; // Cambiar el estado del juego a terminado
-        audio.pause(); // Asegúrate de pausar el audio
-        audio.currentTime = 0; // Reiniciar el tiempo de reproducción
+        gameEnded = true;
+        audio.pause();
+        audio.currentTime = 0;
         arrows.forEach((arrow) => {
-            arrow.style.display = 'none'; // Ocultar todas las flechas
-        });;
-        alert(`El joc ha finalizat!`);
+            arrow.style.display = 'none'; 
+        });
+        // Assignar el score aquí
+        puntuacionInput.value = score;
+        alert(`El joc ha finalitzat!`);
     };
-
+    
+    // Mostrar la primera fletxa aleatòria
     showRandomArrow();
+    // Escoltar l'esdeveniment de pressionar una tecla
     document.addEventListener('keydown', handleKeyPress);
 
-    audio.addEventListener('ended', endGame); // Termina el juego cuando el audio termina
+    // Finalitzar el joc quan l'àudio acabi
+    audio.addEventListener('ended', endGame);
 
-    // Actualización del progreso
+    // Funció per actualitzar el progrés
     const updateProgress = () => {
         if (audio.duration) {
             const percentage = (audio.currentTime / audio.duration) * 100;
             progressBar.value = percentage;
 
-            // Si la barra de progreso llega al 100%, también termina el juego
+            // Si la barra de progrés arriba al 100%, també finalitza el joc
             if (percentage >= 100) {
                 endGame();
             }
         }
+        // Sol·licitar la següent actualització
         requestAnimationFrame(updateProgress);
     };
 
-    audio.play(); // Reproducir la música
-    updateProgress(); // Iniciar la actualización del progreso
+    // Reproduir la música
+    audio.play();
+    // Iniciar l'actualització del progrés
+    updateProgress();
 });

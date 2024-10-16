@@ -1,37 +1,42 @@
 <?php
-session_start(); // Iniciar sesión
+// Ruta al fitxer JSON on es guarden les puntuacions
+$jsonFile = 'noms.json';
 
-// Nombre del archivo JSON donde se guardarán los datos
-$nombreArchivo = 'noms.json';
+// Verifica si el fitxer JSON existeix, si no, el crea
+if (!file_exists($jsonFile)) {
+    file_put_contents($jsonFile, '[]');
+}
 
-// Comprobar si se recibe el nombre
-if (isset($_POST['name'])) {
-    $nombre = htmlspecialchars($_POST['name']);
-    
-    // Asegurarse de que score esté en la sesión
-    $score = isset($_SESSION['score']) ? intval($_SESSION['score']) : 0;
+// Carregar el contingut actual del fitxer JSON
+$jsonData = file_get_contents($jsonFile);
+$scores = json_decode($jsonData, true); // Decodifica el JSON en un array associatiu
 
-    // Verificar que se esté recibiendo correctamente
-    error_log("Nombre: $nombre, Score: $score"); // Para depurar en el log del servidor
+// Verificar si s'han rebut el nom i la puntuació
+if (isset($_POST['name']) && isset($_POST['score'])) {
+    $name = htmlspecialchars($_POST['name']); // Escapar el nom per seguretat
+    $score = intval($_POST['score']); // Assegura't que la puntuació sigui un número enter
 
-    // Leer el archivo existente o crear uno nuevo
-    if (file_exists($nombreArchivo)) {
-        $nombres = json_decode(file_get_contents($nombreArchivo), true);
-    } else {
-        $nombres = [];
-    }
-
-    // Agregar el nuevo nombre y la puntuación
-    $nombres[] = [
-        'name' => $nombre,
+    // Afegir la nova puntuació a l'array
+    $scores[] = [
+        'name' => $name,
         'score' => $score
     ];
 
-    // Guardar el nuevo arreglo de nombres en el archivo JSON
-    file_put_contents($nombreArchivo, json_encode($nombres));
+    // Ordenar l'array per 'score' en ordre descendent perquè el jugador amb més punts estigui primer
+    usort($scores, function ($a, $b) {
+        return $b['score'] - $a['score'];
+    });
 
-    // Éxito al guardar
-    header('Location: Classificacio.html');
+    // Limitar als 10 primers punts
+    $scores = array_slice($scores, 0, 10);
+
+    // Guardar l'array actualitzat de nou en el fitxer JSON
+    file_put_contents($jsonFile, json_encode($scores, JSON_PRETTY_PRINT));
+    
+    // Redirigir a la pàgina de classificació o una altra pàgina
+    header('Location: classificacio.php');
     exit();
+} else {
+    echo "No s'han rebut les dades correctament.";
 }
 ?>
