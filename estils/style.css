@@ -29,6 +29,10 @@ body {
     z-index: -1;
 }
 
+.imglogo{
+    width: 5em;
+}
+
 /* Estil del vídeo de fons */
 .content {
     position: relative;

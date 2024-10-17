@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "title": "Prova",
-        "artist": "Proveta",
+        "title": "Prova2",
+        "artist": "Proveta2",
         "music": "musica_1.mp3",
         "cover": "uploads\/covers\/imatge_1.png",
-        "description": "knkn",
+        "description": "",
         "timingData": "3\r\n99 # 0.5 # 1.5\r\n97 # 2.0 # 2.2\r\n114 # 2.5 # 3.0\r\n"
     }
 ]
