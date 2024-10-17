@@ -9,11 +9,11 @@ $jsonData = file_get_contents($jsonFile);
 $songs = json_decode($jsonData, true);
 
 // Obté el títol i l'artista de la cançó des de la URL
-$title = isset($_GET['title']) ? $_GET['title'] : ' ';
-$artist = isset($_GET['artist']) ? $_GET['artist'] : ' ';
+$title = isset($_GET['title']) ? $_GET['title'] : ' '; // Si el títol no està definit, assigna un valor buit
+$artist = isset($_GET['artist']) ? $_GET['artist'] : ' '; // Si l'artista no està definit, assigna un valor buit
 
 // Obté la cançó seleccionada segons el títol
-$selectedSong = isset($songs[$title]) ? $songs[$title] : null;
+$selectedSong = isset($songs[$title]) ? $songs[$title] : null; // Busca la cançó pel títol, si no existeix, retorna null
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Cançó</title>
-    <link rel="stylesheet" href="/estils/style.css">
+    <link rel="stylesheet" href="/estils/style.css"> <!-- Enllaç al fitxer CSS per a l'estil de la pàgina -->
 </head>
 
 <body>
@@ -42,69 +42,69 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
         </a>
     </nav>
 
+    <!-- Formulari per editar la cançó -->
     <form action="guardarcambis.php" method="post" enctype="multipart/form-data">
-    <div class="afegircan">
-        <ul>
-            <!-- Campo oculto para almacenar el título original -->
-            <input type="hidden" name="original_title" value="<?= htmlspecialchars($title) ?>">
+        <div class="afegircan">
+            <ul>
+                <!-- Camp ocult per emmagatzemar el títol original -->
+                <input type="hidden" name="original_title" value="<?= htmlspecialchars($title) ?>">
 
-            <!-- Campo para el título de la canción -->
-            <li><input type="text" name="titol" placeholder="Títol de la cançó" value="<?= htmlspecialchars($title) ?>"><br></li>
+                <!-- Camp per al títol de la cançó -->
+                <li><input type="text" name="titol" placeholder="Títol de la cançó" value="<?= htmlspecialchars($title) ?>"><br></li>
 
-            <!-- Campo para el artista -->
-            <li><input type="text" name="artista" placeholder="Artista" value="<?= htmlspecialchars($artist) ?>"><br></li>
+                <!-- Camp per a l'artista -->
+                <li><input type="text" name="artista" placeholder="Artista" value="<?= htmlspecialchars($artist) ?>"><br></li>
 
-            <!-- Resto de campos para archivos -->
-            <div class="file-upload">
-                <label for="musica" class="custom-file-label">Select music</label>
-                <input type="file" id="musica" name="musica" accept="audio/*" class="file-input">
-            </div>
-            <div class="file-upload">
-                <label for="imatge" class="custom-file-label">Select Imatge</label>
-                <input type="file" id="imatge" name="imatge" accept="image/*" class="file-input">
-            </div>
-            <div class="file-upload">
-                <label for="lletra" class="custom-file-label">Select TXT</label>
-                <input type="file" id="lletra" name="lletra" accept="text/plain" class="file-input">
-            </div>
+                <!-- Camps per pujar arxius -->
+                <div class="file-upload">
+                    <label for="musica" class="custom-file-label">Select music</label>
+                    <input type="file" id="musica" name="musica" accept="audio/*" class="file-input"> <!-- Camp per pujar un arxiu de música -->
+                </div>
+                <div class="file-upload">
+                    <label for="imatge" class="custom-file-label">Select Imatge</label>
+                    <input type="file" id="imatge" name="imatge" accept="image/*" class="file-input"> <!-- Camp per pujar una imatge -->
+                </div>
+                <div class="file-upload">
+                    <label for="lletra" class="custom-file-label">Select TXT</label>
+                    <input type="file" id="lletra" name="lletra" accept="text/plain" class="file-input"> <!-- Camp per pujar un arxiu de text -->
+                </div>
 
-            <!-- Campo para la descripción -->
-            <li><textarea name="descripcio" rows="4" cols="50" placeholder="Descripció..."><?= isset($selectedSong['description']) ? htmlspecialchars($selectedSong['description']) : ''; ?></textarea><br></li>
+                <!-- Camp per a la descripció -->
+                <li><textarea name="descripcio" rows="4" cols="50" placeholder="Descripció..."><?= isset($selectedSong['description']) ? htmlspecialchars($selectedSong['description']) : ''; ?></textarea><br></li>
 
-            <!-- Botón para guardar los cambios -->
-            <li><input type="submit" class="enviar" value="Guardar Canvis"></li>
-        </ul>
-    </div>
-</form>
+                <!-- Botó per guardar els canvis -->
+                <li><input type="submit" class="enviar" value="Guardar Canvis"></li>
+            </ul>
+        </div>
+    </form>
 
-
+    <!-- Script per validar el formulari abans de l'enviament -->
     <script>
-        // Script per validar el formulari abans de l'enviament
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.querySelector('form');
 
             // Afegeix un escoltador d'esdeveniments al formulari per a l'acció d'enviament
             form.addEventListener('submit', function(event) {
-                // Obté el valor del camp del títol de la cançó
+                // Obté el valor dels camps del formulari
                 const titol = document.querySelector('input[name="titol"]').value;
                 const artista = document.querySelector('input[name="artista"]').value;
-                const fmusic = document.querySelector('input[name="musica"]').files[0];
-                const fcarat = document.querySelector('input[name="imatge"]').files[0];
+                const fmusic = document.querySelector('input[name="musica"]').files[0]; // Arxiu de música
+                const fcarat = document.querySelector('input[name="imatge"]').files[0]; // Arxiu d'imatge
 
                 // Obté el valor del camp de la descripció
                 const descripcio = document.querySelector('textarea[name="descripcio"]').value;
 
+                // Validar si el tipus d'arxiu de música és vàlid
                 if (fmusic && !allowedMusicTypes.includes(fmusic.type)) {
                     alert('Només es permeten arxius de música en format MP3 o WAV.');
-                    event.preventDefault();
+                    event.preventDefault(); // Atura l'enviament del formulari si l'arxiu no és vàlid
                     return;
                 }
 
-
-                // Validar camps
+                // Validar camps obligatoris
                 if (!titol || !artista) {
                     alert('Tots els camps són obligatoris.');
-                    event.preventDefault(); // Evitar l'enviament del formulari
+                    event.preventDefault(); // Atura l'enviament si els camps no estan omplerts
                     return;
                 }
 
@@ -112,7 +112,7 @@ $selectedSong = isset($songs[$title]) ? $songs[$title] : null;
                 const allowedMusicTypes = ['audio/mpeg', 'audio/wav'];
                 if (!allowedMusicTypes.includes(fmusic.type)) {
                     alert('Només es permeten arxius de música en format MP3 o WAV.');
-                    event.preventDefault(); // Evitar l'enviament del formulari
+                    event.preventDefault(); // Atura l'enviament si el tipus d'arxiu no és vàlid
                     return;
                 }
             });

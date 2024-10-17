@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "title": "Prova2",
-        "artist": "Proveta2",
+        "title": "Prova",
+        "artist": "Proveta",
         "music": "musica_1.mp3",
         "cover": "uploads\/covers\/imatge_1.png",
         "description": "",
